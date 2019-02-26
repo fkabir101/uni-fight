@@ -8,7 +8,7 @@ function Header() {
         <div className="container row" id="header">
           <span className="col-3" id="title">Uni-Fight</span>
           
-          <div className="col-9 container" id="navButtons"><RenderNavbar /></div>
+          <div className="col-7 container" id="navButtons"><RenderNavbar /></div>
           
         </div>
       </div>
