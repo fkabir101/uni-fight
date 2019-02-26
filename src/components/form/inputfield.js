@@ -4,16 +4,16 @@ function InputField(prop) {
   if(prop.type === "large"){
     return(
       <div className="form-group">
-        <label>{prop.fieldName}</label>
-        <textarea rows="4" cols="90" type="text" className="form-control"></textarea>
+        <label>{`${prop.fieldName}:`}</label>
+        <textarea  id={prop.id} rows="4" cols="90" type="text" className="form-control"></textarea>
       </div>      
     )
   }
   else{
     return(
       <div className="form-group">
-        <label>{prop.fieldName}</label>
-        <input type="text" className="form-control"></input>
+        <label>{`${prop.fieldName}:`}</label>
+        <input id={prop.id} type="text" className="form-control"></input>
       </div>
     );
   }
