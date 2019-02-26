@@ -6,8 +6,10 @@ import Header from "./compnents/header/headerMaine"
 class App extends Component {
   render() {
     return (
+      <div>
       <Header />
       <Form/>
+      </div>
     );
   }
 }
