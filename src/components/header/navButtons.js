@@ -35,24 +35,8 @@ function RenderNavbar() {
           <li className="nav-item">
             <a className="nav-link" href="/events">View Events</a>
           </li>
-
-          {/* <li className="nav-item">
-            <a className="nav-link user" href="/">Users</a>
-          </li> */}
-          {/* <li>
-          <div className="dropdown show">
-            <a className="nav-item dropdown" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User</a>
-
-            <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a className="dropdown-item" href="/user">User Page</a>
-              <a className="dropdown-item" href="/create">Create Event</a>
-              <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="/login">Logout</a>
-            </div>
-          </div>
-          </li> */}
           <div className="dropdown">
-            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown button</button>
+            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User</button>
 
             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a className="dropdown-item" href="/user">Your Page</a>
