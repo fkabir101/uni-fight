@@ -1,11 +1,11 @@
 import React from "react";
-import "./style.css";
 
-function EventCard(props) {
+
+function ExpandedEventCard(props) {
   console.log(props);
 
   return (
-    <div className="card">
+    <div className="card col-12">
       <div className="content">
         <ul>
           <li>
@@ -25,4 +25,4 @@ function EventCard(props) {
 }
 
 
-export default EventCard;
+export default ExpandedEventCard;
