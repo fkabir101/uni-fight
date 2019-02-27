@@ -12,13 +12,13 @@ function RenderNavbar() {
       <div>
         <ul className="nav justify-content-end">
           <li className="nav-item">
-            <a className="nav-link" href="/">Home</a>
+            <a className="btn btn-secondary" href="/">Home</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/events">View Events</a>
+            <a className="btn btn-secondary" href="/events">View Events</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link login" href="/login">Login</a>
+            <a className="btn btn-secondary" href="/login">Login</a>
           </li>
         </ul>
       </div>
@@ -30,10 +30,10 @@ function RenderNavbar() {
       <div>
         <ul className="nav justify-content-end">
           <li className="nav-item">
-            <a className="nav-link" href="/">Home</a>
+            <a className="btn btn-secondary" href="/">Home</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/events">View Events</a>
+            <a className="btn btn-secondary" href="/events">View Events</a>
           </li>
           <div className="dropdown">
             <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User</button>
