@@ -2,13 +2,14 @@ import React from 'react';
 
 function CheckBox(prop){
   return(
-    <label>
-    {prop.fieldName}
-    <input
-      name="isGoing"
-      value={prop.fieldName}
-      type="checkbox"/>
-  </label>
+    <div className="form-check custom-control-inline">
+      <label>
+        {`${prop.fieldName} `}
+        <input
+          value= {prop.fieldName}
+          type="checkbox"/>
+      </label>
+    </div>
   )
 }
 
