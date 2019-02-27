@@ -3,16 +3,20 @@ import RenderNavbar from "./navButtons"
 
 function Header() {
   return (
-    <div>
-      <div className="jumbotron jumbotron-fluid bg-dark text-light" id="header">
-        <div className="container row" id="header">
-          <span className="col-3" id="title">Uni-Fight</span>
-          
-          <div className="col-7 container" id="navButtons"><RenderNavbar /></div>
-          
-        </div>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a className="navbar-brand" id="title" href="/">Uni-Fight</a>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarText">
+        <ul className="navbar-nav mr-auto">
+        <div></div>
+        </ul>
+        <span className="navbar-text">
+        <RenderNavbar />
+    </span>
       </div>
-    </div>
+    </nav>
   )
 };
 
