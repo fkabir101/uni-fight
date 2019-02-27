@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function InputField(prop) {
-  if(prop.type === "large"){
-    return(
-      <div className="form-group">
-        <label>{`${prop.fieldName}:`}</label>
-        <textarea  id={prop.id} rows="4" cols="90" type="text" className="form-control"></textarea>
-      </div>      
-    )
-  }
-  else{
-    return(
-      <div className="form-group">
-        <label>{`${prop.fieldName}:`}</label>
-        <input id={prop.id} type="text" className="form-control"></input>
-      </div>
-    );
+class InputField extends Component {
+
+
+  render(){
+    if(this.props.type === "large"){
+      return(
+        <div className="form-group">
+          <label>{`${this.props.fieldName}:`}</label>
+          <textarea  id={this.props.id} rows="4" cols="90" type="text" className="form-control" onChange={this.props.onChangeValue}></textarea>
+        </div>      
+      )
+    }
+    else{
+      return(
+        <div className="form-group">
+          <label>{`${this.props.fieldName}:`}</label>
+          <input id={this.props.id} type="text" className="form-control" onChange={this.props.onChangeValue}></input>
+        </div>
+      );
+    }
   }
 }
-
 export default InputField;
