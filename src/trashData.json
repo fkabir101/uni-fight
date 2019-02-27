@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "eventName": "OtakuCon",
+    "eventLocation": "Las Vegas, NV",
+    "eventInfo": "You will never find a more wretched hive of scum and villainy."
+  },
+  {
+    "id": 2,
+    "eventName": "AnotherCon with fighting",
+    "eventLocation": "Springfield, NY",
+    "eventInfo": "New York? Theres another springfield in New York?"
+  },
+  {
+    "id": 3,
+    "eventName": "Animal Crossing, FIGHT!",
+    "eventLocation": "Boring, OR",
+    "eventInfo": "You will never find a more wretched hive of scum and villainy."
+  }
+]
