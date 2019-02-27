@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Form from './components/form/form';
 import Header from "./components/header/headerMaine";
 import MainPage from "./components/mainPage/mainPage";
+import EventsPage from "./components/Events/eventspage";
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/create" component={Form}/>
             <Route exact path="/" component={MainPage}/>
+            <Route exact path="/events" component={EventsPage}/>
           </Switch>
         </div>
       </Router>
