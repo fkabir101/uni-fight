@@ -1,15 +1,17 @@
 import React from 'react';
 import Wrapper from "../Wrapper/index";
-import EventCard from "../EventCards/EventCard";
+import ExpandedEventCard from "../Events/expandedevents";
 import trashData from "../../trashData.json";
 
 
-function MainPage() {
+function EventsPage() {
   return (
     <Wrapper>
       {trashData.map(eventData => {
+            console.log(eventData);
+
         return (
-          <EventCard
+          <ExpandedEventCard
             key={eventData.id}
             name={eventData.eventName}
             location={eventData.eventLocation}
@@ -21,4 +23,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default EventsPage;
