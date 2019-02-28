@@ -17,15 +17,32 @@ class Form extends Component {
       venue: "",
       limit: "",
       start:"",
-      end:""
+      end:"",
+      category:[],
+      location:""
     };
     this.updateValue = this.updateValue.bind(this);
     this.getDate = this.getDate.bind(this);
     this.onClickFunction = this.onClickFunction.bind(this);
+    this.getCheckBoxValue = this.getCheckBoxValue.bind(this);
   }
 
   updateValue(event){
     this.setState({[event.target.id]: event.target.value});
+  }
+  getCheckBoxValue(event){
+    if(!this.state.category.includes(event.target.value)){
+      this.setState({category: [...this.state.category, event.target.value]});
+    }
+    else{
+      const categoryTempArray = this.state.category
+      for( let i = 0; i < categoryTempArray.length-1; i++){ 
+        if ( categoryTempArray[i] === event.target.value) {
+          categoryTempArray.splice(i, 1); 
+        }
+     }
+     this.setState({category: categoryTempArray});
+    }
   }
   getDate(value, type){
     this.setState({[type] : value})
@@ -60,10 +77,19 @@ class Form extends Component {
             id="limit"
             onChangeValue = {this.updateValue}
           />
-          <SelectField fieldName="Location" options={locations}/>
+          <SelectField 
+            fieldName="Location"
+            id="location" 
+            options={locations}
+            onChangeValue = {this.updateValue}
+          />
           <label>Categories:</label> <br/>
           {categorys.map(category => (
-            <CheckBox key={category.name}fieldName={category.name}/>
+            <CheckBox 
+              key={category.name}
+              fieldName={category.name}
+              onChangeValue = {this.getCheckBoxValue}
+            />
           ))}
           <br/>
           <br/>
