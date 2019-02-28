@@ -1,28 +1,55 @@
-import React from "react";
+import React, {Component} from "react";
+import InputField from "../form/inputfield";
+import Button from "../button"
 
-function SignUpForum() {
-  return (
-    <div>
-      <form>
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="email" class="form-control" id="usernameInput" aria-describedby="usernameHelp" placeholder="Not_Null"></input>
-        </div>
+class SignUpForum extends Component {
+  constructor() {
+    super();
+    this.state = {
+      userName: "",
+      email: "",
+      password: ""
+    };
+    this.updateValue = this.updateValue.bind(this);
+  }
+  updateValue(event) {
+    this.setState({ [event.target.id]: event.target.value });
+    
+  }
+  render() {
 
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
-          <small id="emailHelp" class="form-text text-muted">We'll never sell your email ...unless we get paid.</small>
-        </div>
+    return (
+      <div><InputField
+      fieldName="Choose a Username"
+      id="userName"
+      onChangeValue={this.updateValue}
+       />
 
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="loginPassword" placeholder="D@ddyzH0m3"></input>
-        </div>
-        <button type="submit" class="btn btn-primary" id="loginSubmit">Login</button>
-      </form>
-    </div>
-  )
-};
+       <InputField
+       fieldName="Choose a Password"
+       id="password"
+       onChangeValue={this.updateValue}
+        />
+
+<InputField
+       fieldName="Enter your Email"
+       id="email"
+       onChangeValue={this.updateValue}
+        />
+
+        <br/>
+
+        <Button
+             name="Submit"
+             color="primary"
+            clickFunction={this.onClickFunction}
+           />
+        
+        </div>       
+    )
+  }
+}
+
+
 
 export default SignUpForum;
