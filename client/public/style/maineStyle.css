@@ -39,3 +39,32 @@
   display: inline-block;
   width: 100%;
 }
+
+#SignUpJumbo {
+  margin-left: 10px;
+  margin-right: 5px;
+  height: 520px;
+}
+
+#LoginJumbo {
+  margin-right: 10px;
+  margin-left: 5px;
+  height: 520px;
+}
+
+.btn {
+  margin: 2px;
+}
+
+#userJumbo {
+  margin: 4px;
+}
+
+#actionCard {
+  margin: 4px;
+}
+
+#rowJumbo {
+  margin-left: 20px;
+  margin-bottom: 150px;
+}

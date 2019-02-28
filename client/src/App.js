@@ -6,6 +6,7 @@ import MainPage from "./components/mainPage/mainPage";
 import Footer from "./components/footer/footerMaine"
 import Login from "./components/login/loginMaine"
 import EventsPage from "./components/Events/eventspage";
+import UserPage from "./components/userPage/userMaine"
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
             <Route exact path="/" component={MainPage}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/events" component={EventsPage}/>
+            <Route exact path="/user" component={UserPage}/>
           </Switch>
           <Footer />
         </div>
