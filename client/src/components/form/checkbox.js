@@ -1,20 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class CheckBox extends Component{
-  render(){
+function CheckBox(props){
     return(
       <div className="form-check custom-control-inline">
         <label>
-          {`${this.props.fieldName} `}
+          {`${props.fieldName} `}
           <input
-            value= {this.props.fieldName}
+            value= {props.fieldName}
             type="checkbox"
-            onChange={this.props.onChangeValue}
+            onChange={props.onChangeValue}
             />
         </label>
       </div>
     )
-  }
 }
 
 

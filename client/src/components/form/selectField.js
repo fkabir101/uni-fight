@@ -1,13 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class SelectField extends Component{
-  render(){
+function SelectField(props){
     return(
       <div className="form-group">
-        <label>{`${this.props.fieldName}: `}</label> <br/>
-        <select id = {this.props.id}className="custom-slect" onChange = {this.props.onChangeValue}>
+        <label>{`${props.fieldName}: `}</label> <br/>
+        <select id = {props.id}className="custom-slect" onChange = {props.onChangeValue}>
           <option defaultValue>Location</option>
-          {this.props.options.map(option => (
+          {props.options.map(option => (
             <option 
               key={option.option} 
               value={option.option}>
@@ -17,7 +16,6 @@ class SelectField extends Component{
         </select>
       </div>
     )
-  }
 }
 
 

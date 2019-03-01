@@ -8,6 +8,8 @@ import Button from "../button"
 import locations from "./locations.json"
 import categorys from "./category.json"
 
+import api from "../../utils/api";
+
 class Form extends Component {
   constructor() {
     super();
@@ -21,16 +23,12 @@ class Form extends Component {
       category:[],
       location:""
     };
-    this.updateValue = this.updateValue.bind(this);
-    this.getDate = this.getDate.bind(this);
-    this.onClickFunction = this.onClickFunction.bind(this);
-    this.getCheckBoxValue = this.getCheckBoxValue.bind(this);
   }
 
-  updateValue(event){
+  updateValue = event =>{
     this.setState({[event.target.id]: event.target.value});
   }
-  getCheckBoxValue(event){
+  getCheckBoxValue = event =>{
     if(!this.state.category.includes(event.target.value)){
       this.setState({category: [...this.state.category, event.target.value]});
     }
@@ -44,11 +42,14 @@ class Form extends Component {
      this.setState({category: categoryTempArray});
     }
   }
-  getDate(value, type){
+  getDate = (value, type) =>{
     this.setState({[type] : value})
   }
-  onClickFunction(){
+  onClickFunction = ()=>{
     console.log(this.state);
+    api.createEvent(this.state)
+      .then(res => console.log(res.data))
+      .catch(error => console.log(error))
   }
 
   render(){
