@@ -46,17 +46,20 @@ class Form extends Component {
     this.setState({[type] : value})
   }
   onClickFunction = ()=>{
-    console.log(this.state);
     api.createEvent(this.state)
-      .then(res => console.log(res.data))
+      .then(res => {
+        console.log(res.data)
+        this.props.history.push('/')
+      })
       .catch(error => console.log(error))
+    
   }
 
   render(){
 
     return (
       <div className="container">
-        <form>
+        <form onSubmit = {this.onClickFunction}>
           <InputField 
             fieldName="Event Name"
             id="name"
