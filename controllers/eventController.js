@@ -33,5 +33,14 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json({ dbModel }))
       .catch(err => res.status(422).json(err));
+<<<<<<< HEAD
+=======
+  },
+  getEventById : function(req, res){
+    db.Events
+      .findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+>>>>>>> fc0368d6567a092e29325038658193502eeeb34f
   }
 };

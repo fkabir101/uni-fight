@@ -5,8 +5,5 @@ router.route("/create")
   .post(eventController.createEvent);
 
 router.route("/:id")
-  .get(eventController.findById)
-  .put(eventController.update)
-  .delete(eventController.remove);
-
+  .get(eventController.getById)
 module.exports = router
