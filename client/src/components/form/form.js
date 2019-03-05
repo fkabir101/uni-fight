@@ -50,7 +50,7 @@ class Form extends Component {
       .then(res => {
         console.log(res.data)
         // THIS LINE BRINGS YOU TO HOMEPAGE
-        //this.props.history.push('/')
+        this.props.history.push('/')
       })
       .catch(error => console.log(error))
     
