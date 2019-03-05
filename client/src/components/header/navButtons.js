@@ -1,7 +1,7 @@
 import React from "react";
 
-//const localUser = sessionStorage.getItem("userName");
-const localUser = "admin";
+const localUser = sessionStorage.getItem("userName");
+//const localUser = "admin";
 
 function RenderNavbar() {
   console.log("localUser: " + localUser);
