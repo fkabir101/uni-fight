@@ -1,5 +1,8 @@
 import React from "react";
-//import RUSure from "./areYouSure"
+import ModalComponent from "../modal";
+
+
+
 
 function UserPage () {
   return(
@@ -20,8 +23,17 @@ function UserPage () {
           <h2 id="usernameDiv">Username</h2>
           <h2 id="emailDiv">Email</h2>
           <hr className="my-4"></hr>
-          <button type="button" className="btn btn-danger" id="partEventBtn">Delete Account</button>
-          {/* <RUSure /> */}
+
+          <ModalComponent
+          btnName= "DeleteAccount"
+          title= "Delete Account"
+          msg= "Are you sure you want to delete your account?"
+          negative= "No! DON'T Delete My Acount"
+          affirmative= "Yes! Delete My Account."
+          primColor="danger"
+          secColor= "secondary" />
+
+          
           </div>
         </div>
       </div>
