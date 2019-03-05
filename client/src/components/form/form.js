@@ -8,7 +8,7 @@ import Button from "../button"
 import locations from "./locations.json"
 import categorys from "./category.json"
 
-import api from "../../utils/api";
+import API from "../../utils/API";
 
 class Form extends Component {
   constructor() {
@@ -46,10 +46,11 @@ class Form extends Component {
     this.setState({[type] : value})
   }
   onClickFunction = ()=>{
-    api.createEvent(this.state)
+    API.createEvent(this.state)
       .then(res => {
         console.log(res.data)
-        this.props.history.push('/')
+        // THIS LINE BRINGS YOU TO HOMEPAGE
+        //this.props.history.push('/')
       })
       .catch(error => console.log(error))
     
