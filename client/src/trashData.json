@@ -1,20 +1,40 @@
-[
-  {
+[{
     "id": 1,
-    "eventName": "OtakuCon",
-    "eventLocation": "Las Vegas, NV",
-    "eventInfo": "You will never find a more wretched hive of scum and villainy."
+    "name": "OtakuCon",
+    "description": "You will never find a more wretched hive of scum and villainy.",
+    "venue": "Kyle's basement",
+    "location": "Las Vegas, NV",
+    "category": "Tekken 7",
+    "attendees": "",
+    "dates": [{
+      "start": "",
+      "end": ""
+    }]
   },
   {
     "id": 2,
-    "eventName": "AnotherCon with fighting",
-    "eventLocation": "Springfield, NY",
-    "eventInfo": "New York? Theres another springfield in New York?"
+    "name": "AnotherCon with fighting",
+    "description": "New York? Theres another springfield in New York?",
+    "venue": "Kyle's basement",
+    "location": "Springfield, NY",
+    "category": "Tekken 7",
+    "attendees": "",
+    "dates": [{
+      "start": "",
+      "end": ""
+    }]
   },
   {
     "id": 3,
-    "eventName": "Animal Crossing, FIGHT!",
-    "eventLocation": "Boring, OR",
-    "eventInfo": "You will never find a more wretched hive of scum and villainy."
+    "name": "Animal Crossing, FIGHT!",
+    "description": "You will never find a more wretched hive of scum and villainy.",
+    "venue": "Kyle's basement",
+    "location": "Boring, OR",
+    "category": "Tekken 7",
+    "attendees": "",
+    "dates": [{
+      "start": "",
+      "end": ""
+    }]
   }
 ]
