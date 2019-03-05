@@ -7,6 +7,11 @@ module.exports = {
       .create(req.body)
       .then(dbModel => res.json({dbModel}))
       .catch(err => res.status(422).json(err));
-   // res.json(req.body);
+  },
+  getEventById : function(req, res){
+    db.Events
+      .findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 }
