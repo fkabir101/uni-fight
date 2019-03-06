@@ -36,11 +36,11 @@ const EventSchema = new mongoose.Schema({
     ref: "User",
   },
   start :{
-    type: Array,
+    type: String,
     required: true
   },
   end : {
-    type: Array,
+    type: String,
     required: true
   }
 });
