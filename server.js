@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(routes);
 app.use(cookieParser());
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/unifight", { useNewUrlParser: true });
 
 app.listen(PORT, function(){
   console.log(`Listening on port: ${PORT}`)
