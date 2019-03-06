@@ -5,5 +5,5 @@ router.route("/create")
   .post(eventController.createEvent);
 
 router.route("/:id")
-  .get(eventController.getEventById)
+  .get(eventController.getById)
 module.exports = router
