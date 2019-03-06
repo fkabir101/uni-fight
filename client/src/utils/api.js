@@ -7,7 +7,7 @@ export default {
   getEvents: function () {
     return axios.get("/api/events");
   },
-  getById: function (id) {
+  getEventById: function (id) {
     return axios.get('/api/events/' + id);
   },
   deleteEvent: function (id) {
