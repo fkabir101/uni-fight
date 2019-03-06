@@ -24,22 +24,6 @@
   font-family: "lobster";
 }
 
-.footer {
-  margin-top: 30px;
-  text-align: center;
-  align-content: center;
-  
-}
-
-#footText {
-  font-family: "comic sans ms"
-}
-
-#footer {
-  display: inline-block;
-  width: 100%;
-}
-
 #SignUpJumbo {
   margin-left: 10px;
   margin-right: 5px;
