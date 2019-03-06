@@ -43,8 +43,11 @@ class Form extends Component {
     }
   }
   getDate = (value, type) =>{
-    this.setState({[type] : value})
+    let date = String(value);
+    date = date.slice(0, 15);
+    this.setState({[type] : date})
   }
+
   onClickFunction = ()=>{
     API.createEvent(this.state)
       .then(res => {
