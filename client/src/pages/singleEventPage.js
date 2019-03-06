@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import API from "../utils/API";
+import API from "../utils/api";
 //5c7ff9079bbb861570ddb03d use this adress for test
 class SingleEventPage extends Component {
   state = {
