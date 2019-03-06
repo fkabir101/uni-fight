@@ -8,7 +8,7 @@ import Button from "../button"
 import locations from "./locations.json"
 import categorys from "./category.json"
 
-import API from "../../utils/API";
+import API from "../../utils/api";
 
 class Form extends Component {
   constructor() {

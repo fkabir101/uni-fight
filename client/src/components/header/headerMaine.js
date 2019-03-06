@@ -1,5 +1,6 @@
 import React from "react";
-import RenderNavbar from "./navButtons"
+import RenderNavbar from "./navButtons";
+import "./style/header.css";
 
 function Header() {
   return (
