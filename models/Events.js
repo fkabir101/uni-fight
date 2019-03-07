@@ -39,9 +39,16 @@ const EventSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  startUnix:{
+    type: String,
+    required: true
+  },
   end : {
     type: String,
     required: true
+  },
+  streamLink : {
+    type: String,
   }
 });
 

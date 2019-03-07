@@ -4,6 +4,7 @@ import SelectField from "./selectField";
 import CheckBox from "./checkbox";
 import CalenderComponent from "./calender"
 import Button from "../button"
+import Moment from "moment";
 
 import locations from "./locations.json"
 import categorys from "./category.json"
@@ -19,9 +20,11 @@ class Form extends Component {
       venue: "",
       limit: "",
       start:"",
+      startUnix: 0,
       end:"",
       category:[],
-      location:""
+      location:"",
+      streamLink:""
     };
   }
 
@@ -45,7 +48,13 @@ class Form extends Component {
   getDate = (value, type) =>{
     let date = String(value);
     date = date.slice(0, 15);
-    this.setState({[type] : date})
+    if(type === "start"){
+      const unixTime=Moment(date, "ddd MMM DD YYYY").format("X");
+      this.setState({[type] : date, startUnix:unixTime});
+    }
+    else{
+      this.setState({[type] : date});
+    }
   }
 
   onClickFunction = ()=>{
@@ -67,22 +76,26 @@ class Form extends Component {
           <InputField 
             fieldName="Event Name"
             id="name"
+            type="text"
             onChangeValue = {this.updateValue}
           />
           <InputField 
             fieldName="Description"
-            type= "large"
+            size= "large"
+            type="text"
             id="description"
             onChangeValue = {this.updateValue}
           />
           <InputField 
             fieldName="Venue"
             id="venue"
+            type="text"
             onChangeValue = {this.updateValue}
           />
           <InputField 
             fieldName="Max Participants"
             id="limit"
+            type="number"
             onChangeValue = {this.updateValue}
           />
           <SelectField 
@@ -118,6 +131,12 @@ class Form extends Component {
             </div>
           </div>
           <br/>
+          <InputField 
+            fieldName="Stream Link (leave empty if none)"
+            id="streamLink"
+            type="url"
+            onChangeValue = {this.updateValue}
+          />
           <Button 
             name="Submit" 
             color="primary"

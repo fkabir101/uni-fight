@@ -1,7 +1,7 @@
 import React from "react";
 
-//const localUser = sessionStorage.getItem("userName");
-const localUser = "admin";
+const localUser = sessionStorage.getItem("userName");
+//const localUser = "admin";
 
 function RenderNavbar() {
   console.log("localUser: " + localUser);
@@ -37,7 +37,7 @@ function RenderNavbar() {
               <a className="dropdown-item" id="userLink" href="/user">Your Page</a>
               <a className="dropdown-item" id="createLink" href="/create">Create Event</a>
               <div className="dropdown-divider"></div>
-              <a className="dropdown-item" id="logoutLink" href="/login">Logout</a>
+              <button className="dropdown-item" id="logoutLink">Logout</button>
             </div>
           </div>
           </li>
