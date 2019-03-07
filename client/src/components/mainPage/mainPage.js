@@ -5,6 +5,7 @@ import trashData from "../../trashData.json";
 import CssSwitcher from "../themeswitcher/cssSwitcher";
 
 
+
 function MainPage() {
   return (
     <Wrapper>
