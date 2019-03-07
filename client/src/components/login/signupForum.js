@@ -80,6 +80,8 @@ class SignUpForum extends Component {
       .register({ username: this.state.username, email:this.state.email, password: this.state.password })
       .then(res => {
         console.log(res.data);
+        sessionStorage.setItem("userName", res.data.username);
+        sessionStorage.setItem("email", res.data.email);
         this.setState({ success: res.data })
 
       })
