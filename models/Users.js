@@ -1,20 +1,18 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const passportLocalMongoose = require('passport-local-mongoose');
 
-const UserSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true
-  },
+const User = new Schema({
   email: {
     type: String,
     required: true,
-  },
-  password: {
-    type: String,
-    required: true
   }
-})
+  /* 
+    Define your user information fields for the schema here, DO NOT MAKE "username" and "password" fields, since passport will set those for you
+  */
+});
 
-const Users = mongoose.model("User", UserSchema)
+// Set up passport to 
+User.plugin(passportLocalMongoose);
 
-module.exports = Users;
+module.exports = mongoose.model('User', User);
