@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import "../../../../node_modules/bootswatch/dist/cyborg/bootstrap.min.css"
+//import "../../../../node_modules/bootswatch/dist/cyborg/bootstrap.min.css"
 
 
 class  CssSwitcher extends Component{

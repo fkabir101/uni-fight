@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import API from "../utils/api";
-//5c7ff9079bbb861570ddb03d use this adress for test
+import Button from "../components/button"
+import ReactPlayer from 'react-player'
+
+// 5c7ff9079bbb861570ddb03d use this address for test without twitch
+// 5c8143515d426908b8e8a524 use this address for test with twitch
 class SingleEventPage extends Component {
   state = {
     categorys: [],
@@ -11,7 +15,8 @@ class SingleEventPage extends Component {
     start: "",
     end: "",
     venue: "",
-    attendNum: 0
+    attendNum: 0,
+    streamLink: "",
   };
   componentDidMount = () =>{
     //(res => this.setState({ eventObject: res.data }))
@@ -25,34 +30,38 @@ class SingleEventPage extends Component {
         start: res.data.start,
         end: res.data.end,
         venue: res.data.venue,
-        attendNum: res.data.attendees.length
+        attendNum: res.data.attendees.length,
+        streamLink: res.data.streamLink
       }))
-      .then(() =>console.log(this.state))
+      .then(() =>{
+
+      })
       .catch(error => console.log(error))
   }
   render(){
+    
     return(
-      <div className = "container">
-        <h1>{this.state.name}</h1>
-         {this.state.categorys.map(category => (
-            <p key={category}>{category}</p>
+      <div className = "container border border-dark">
+        <div className = "jumbotron bg-dark text-light text-center ">
+          <h1 className = "display-4"><strong><u>{this.state.name}</u></strong></h1>
+          {this.state.categorys.map(category => (
+            <h2 className = "d-inline-block m-2" key={category}>{category}</h2>
           ))}
+          <h4>{this.state.venue} in {this.state.location}</h4>
+          <Button
+            name="Join"
+            color="danger"
+          />
+        </div>
+        <p className = "text-center">Attendants: {this.state.attendNum}/{this.state.limit}</p>
+        <p>{this.state.description}</p>
+        {this.state.streamLink.includes("https") ? 
+          (<ReactPlayer url={this.state.streamLink}/>) : 
+          (<p></p>)
+        }
       </div>
     )
   }
 }
-/*
-{category: Array(4), attendees: Array(0), start: Array(1), end: Array(1), _id: "5c7f08c29291872674fbbdfa", …}
-category: (4) ["Street Fighter 5", "Tekken 7", "Super Smash Bros. Ultimate", "Dragon Ball Fighterz"]
-description: "Its evo needs no introduction"
-limit: 10000
-location: "NV"
-name: "Evo 2019"
-start: ["2019-07-12T04:00:00.000Z"]
-venue: "Mandalay Bay "
-__v: 0
-_id: "5c7f08c29291872674fbbdfa"
-__proto__: Object
 
-*/
 export default SingleEventPage;
