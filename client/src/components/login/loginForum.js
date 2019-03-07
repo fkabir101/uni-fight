@@ -89,7 +89,7 @@
 
 import React, {Component} from "react";
 import {Redirect} from "react-router-dom";
-import API from "../utils/API";
+import API from "../../utils/api";
 
 class LoginForum extends Component {
   state = {
@@ -113,6 +113,7 @@ class LoginForum extends Component {
       .login({username: this.state.username, password: this.state.password})
       .then(res => {
         console.log(res.data);
+        //sessionStorage.setItem("userName", userInfo.username);
         this.setState({isLoggedIn: res.data})
 
       })
@@ -123,6 +124,7 @@ class LoginForum extends Component {
     // If user is logged in, take them to main page
     if (this.state.isLoggedIn) {
       return <Redirect to="/"/>
+
     }
 
     return (

@@ -1,5 +1,5 @@
 const db = require('../models');
-const User = require('../models/user');
+const User = require('../models/Users');
 
 module.exports = {
   findAll: function (req, res) {
@@ -42,7 +42,7 @@ module.exports = {
   register: function (req, res) {
     /* To create a new user */
     User
-      .register(new User({username: req.body.username}), req.body.password, function (err) {
+      .register(new User({username: req.body.username, email: req.body.email}), req.body.password, function (err) {
         if (err) {
           console.log('error while user register!', err);
           return res.status(422).json(err);

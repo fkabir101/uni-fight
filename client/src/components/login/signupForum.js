@@ -56,12 +56,13 @@
 
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import API from "../utils/API";
+import API from "../../utils/api";
 
 class SignUpForum extends Component {
   state = {
     success: false,
     username: "",
+    email: "",
     password: ""
   }
   
@@ -76,7 +77,7 @@ class SignUpForum extends Component {
   register = (e) => {
     e.preventDefault();
     API
-      .register({ username: this.state.username, password: this.state.password })
+      .register({ username: this.state.username, email:this.state.email, password: this.state.password })
       .then(res => {
         console.log(res.data);
         this.setState({ success: res.data })
@@ -88,7 +89,8 @@ class SignUpForum extends Component {
   render() {
     // If Signup was a success, take them to the Login page
     if (this.state.success) {
-      return <Redirect to="/login" />
+      return <Redirect to="/" />
+      //this.props.history.push('/')
     }
 
     return (
@@ -104,9 +106,20 @@ class SignUpForum extends Component {
                 value={this.state.username}
                 onChange={this.handleInputChange}
                 className="form-control"
-                placeholder="Username" />
+                placeholder="R`); DROP TABLE Users; --" />
               <small id="usernameHelp" className="form-text text-muted">Enter your username</small>
             </div>
+            <div className="form-group">
+              <label htmlFor="email">email</label>
+              <input
+                type="text"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleInputChange}
+                className="form-control"
+                placeholder="hadouken@sftp.com" />
+              <small id="emailHelp" className="form-text text-muted">Enter your Email</small>
+              </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
@@ -115,7 +128,7 @@ class SignUpForum extends Component {
                 value={this.state.password}
                 onChange={this.handleInputChange}
                 className="form-control"
-                placeholder="Password"
+                placeholder="D@ddyzH0m3"
               />
             </div>
 
