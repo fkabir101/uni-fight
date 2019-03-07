@@ -2,7 +2,7 @@ import React from "react";
 import LoginForum from "./loginForum";
 import SignUpForum from "./signupForum";
 
-function Login() {
+function Login(props) {
   return (
     <div>
       <div className="row">
@@ -24,7 +24,7 @@ function Login() {
           <h1>Login</h1>
         </div>
         <hr className="my-4"></hr>
-          <LoginForum />
+          <LoginForum loginCheck={props.loginCheck}/>
       </div>
       </div>
       
