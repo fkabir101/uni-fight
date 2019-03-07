@@ -37,7 +37,7 @@ function RenderNavbar() {
               <a className="dropdown-item" id="userLink" href="/user">Your Page</a>
               <a className="dropdown-item" id="createLink" href="/create">Create Event</a>
               <div className="dropdown-divider"></div>
-              <button className="dropdown-item" id="logoutLink" onClick={this.logout}>Logout</button>
+              <button className="dropdown-item" id="logoutLink">Logout</button>
             </div>
           </div>
           </li>
