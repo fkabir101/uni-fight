@@ -80,8 +80,9 @@ class SignUpForum extends Component {
       .register({ username: this.state.username, email:this.state.email, password: this.state.password })
       .then(res => {
         console.log(res.data);
-        // sessionStorage.setItem("userName", res.data.username);
-        // sessionStorage.setItem("email", res.data.email);
+        sessionStorage.setItem("user", res.data.username);
+        sessionStorage.setItem("email", res.data.email);
+        sessionStorage.setItem("id", res.data._id);
         this.props.loginCheck();
         this.setState({ success: res.data })
 
@@ -91,7 +92,7 @@ class SignUpForum extends Component {
 
   render() {
     // If Signup was a success, take them to the Login page
-    if (this.state.isLoggedIn) {
+    if (this.state.success) {
     //if(this.state.success) {
       return <Redirect to="/" />
       //this.props.history.push('/')

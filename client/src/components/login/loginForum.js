@@ -24,8 +24,9 @@ class LoginForum extends Component {
       .login({username: this.state.username, password: this.state.password})
       .then(res => {
         console.log(res.data);
-        // sessionStorage.setItem("userName", res.data.username);
-        // sessionStorage.setItem("email", res.data.email);
+        sessionStorage.setItem("user", res.data.username);
+        sessionStorage.setItem("email", res.data.email);
+        sessionStorage.setItem("id", res.data._id);
         this.props.loginCheck();
 
         this.setState({isLoggedIn: res.data})

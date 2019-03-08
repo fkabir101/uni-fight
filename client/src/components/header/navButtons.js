@@ -11,7 +11,9 @@ class RenderNavbar extends Component {
       .logout()
       .then(res => {
         console.log(res.data);
-        
+        sessionStorage.removeItem("user");
+        sessionStorage.removeItem("email");
+        sessionStorage.removeItem("id");
         this.props.loginCheck();
 
         this.setState({isLoggedIn: false});
