@@ -27,5 +27,8 @@ export default {
   },
   saveTheme: function(userInfo) {
     return axios.post("/api/users/saveTheme", userInfo)
+  },
+  attend: function(attendInfo){
+    return axios.put('/api/events/attend', attendInfo);
   }
 }

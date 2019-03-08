@@ -38,8 +38,20 @@ class SingleEventPage extends Component {
       })
       .catch(error => console.log(error))
   }
+  onClickFunction = () => {
+    if(sessionStorage.getItem("id") !== null){
+      const attendObject = {
+        userId: sessionStorage.getItem("id"),
+        eventId : this.props.match.params.id
+      }
+      API.attend(attendObject)
+        .then(res => this.setState({ 
+          attendNum: res.data.attendees.length,
+        }))
+        .catch(err => console.log(err));
+    }
+  }
   render(){
-    
     return(
       <div className = "container border border-dark">
         <div className = "jumbotron bg-dark text-light text-center ">
@@ -48,10 +60,16 @@ class SingleEventPage extends Component {
             <h2 className = "d-inline-block m-2" key={category}>{category}</h2>
           ))}
           <h4>{this.state.venue} in {this.state.location}</h4>
-          <Button
-            name="Join"
-            color="danger"
-          />
+          {sessionStorage.getItem("id") !== null ? 
+          (          
+            <Button
+              name="Join"
+              color="danger"
+              clickFunction = {this.onClickFunction }
+            />
+          ) : 
+          (<p></p>)
+          }
         </div>
         <p className = "text-center">Attendants: {this.state.attendNum}/{this.state.limit}</p>
         <p>{this.state.description}</p>
