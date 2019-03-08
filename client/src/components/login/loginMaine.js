@@ -1,11 +1,12 @@
 import React from "react";
 import LoginForum from "./loginForum";
 import SignUpForum from "./signupForum";
+import "./style/login.css";
 
 function Login(props) {
   return (
     <div>
-      <div className="row">
+      <div className="row" id="logRow">
       <div className="container xs-col-12 col-md-6">
       <div className="jumbotron" id="SignUpJumbo">
       <div className="text-center">
