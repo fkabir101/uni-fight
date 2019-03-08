@@ -21,8 +21,8 @@ function UserPage () {
           </div>
 
           <div className = "jumbotron col-8" id="userJumbo">
-          <h2 id="usernameDiv">Username</h2>
-          <h2 id="emailDiv">Email</h2>
+          {/* <h2>Hey, {res.data.username} you made it to the user page!</h2> */}
+          {/* <h2>Your email is {this.state.isLoggedIn.email}</h2> */}
           <hr className="my-4"></hr>
 
           <ModalComponent

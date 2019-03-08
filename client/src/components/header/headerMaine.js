@@ -2,7 +2,7 @@ import React from "react";
 import RenderNavbar from "./navButtons";
 import "./style/header.css";
 
-function Header() {
+function Header(props) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark" id="header">
       <a className="navbar-brand" id="title" href="/">Uni-Fight</a>
@@ -14,7 +14,7 @@ function Header() {
         <div></div>
         </ul>
         <span className="navbar-text">
-        <RenderNavbar />
+        <RenderNavbar isLoggedIn={props.isLoggedIn} loginCheck={props.loginCheck}/>
     </span>
       </div>
     </nav>
