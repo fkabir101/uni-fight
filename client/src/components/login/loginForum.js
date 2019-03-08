@@ -24,12 +24,14 @@ class LoginForum extends Component {
       .login({username: this.state.username, password: this.state.password})
       .then(res => {
         console.log(res.data);
-        sessionStorage.setItem("userName", res.data.username);
-        sessionStorage.setItem("email", res.data.email);
+        // sessionStorage.setItem("userName", res.data.username);
+        // sessionStorage.setItem("email", res.data.email);
+        this.props.loginCheck();
+
         this.setState({isLoggedIn: res.data})
 
       })
-      .catch(err => console.log(err.response));
+      .catch(err => console.log(err));
   }
 
   render() {
