@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 //import {Redirect} from "react-router-dom";
 import API from "../../utils/api";
+import { withRouter } from 'react-router';
 
 class RenderNavbar extends Component {
   logout = (e) => {
@@ -16,8 +17,7 @@ class RenderNavbar extends Component {
 
         this.setState({isLoggedIn: false});
         localStorage.clear();
-        //this.props.history.replace('/login');
-       // return <Redirect to="/login"/>
+        this.props.history.push('/login');
 
       })
       .catch(err => console.log(err));
@@ -80,4 +80,4 @@ class RenderNavbar extends Component {
 }
 
 
-export default RenderNavbar;
+export default withRouter(RenderNavbar);

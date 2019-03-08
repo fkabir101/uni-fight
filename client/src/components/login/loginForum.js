@@ -24,8 +24,6 @@ class LoginForum extends Component {
       .login({username: this.state.username, password: this.state.password})
       .then(res => {
         console.log(res.data);
-        // sessionStorage.setItem("userName", res.data.username);
-        // sessionStorage.setItem("email", res.data.email);
         this.props.loginCheck();
 
         this.setState({isLoggedIn: res.data})
@@ -45,7 +43,6 @@ class LoginForum extends Component {
       <div className="container my-5">
         <div className="row justify-content-center">
           <form>
-            <h3>Login!</h3>
             <div className="form-group">
               <label htmlFor="username">Username</label>
               <input
@@ -54,8 +51,8 @@ class LoginForum extends Component {
                 value={this.state.username}
                 onChange={this.handleInputChange}
                 className="form-control"
-                placeholder="Username"/>
-              <small id="usernameHelp" className="form-text text-muted">Enter your username</small>
+                placeholder="Enter Your Username"/>
+              {/* <small id="usernameHelp" className="form-text text-muted">Enter your username</small> */}
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
@@ -65,7 +62,7 @@ class LoginForum extends Component {
                 value={this.state.password}
                 onChange={this.handleInputChange}
                 className="form-control"
-                placeholder="Password"
+                placeholder="Enter Your Password"
               />
             </div>
 
