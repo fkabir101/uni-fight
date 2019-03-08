@@ -15,7 +15,9 @@ class RenderNavbar extends Component {
         this.props.loginCheck();
 
         this.setState({isLoggedIn: false});
-        this.props.history.push('/login');
+        localStorage.clear();
+        //this.props.history.replace('/login');
+       // return <Redirect to="/login"/>
 
       })
       .catch(err => console.log(err));
