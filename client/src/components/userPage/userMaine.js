@@ -1,5 +1,6 @@
 import React from "react";
 import ModalComponent from "../modal";
+import CssSwitcher from "../themeswitcher/cssSwitcher";
 
 
 
@@ -32,6 +33,7 @@ function UserPage () {
           affirmative= "Yes! Delete My Account."
           primColor="danger"
           secColor= "secondary" />
+          <CssSwitcher/>
 
           
           </div>

@@ -6,7 +6,11 @@ const User = new Schema({
   email: {
     type: String,
     required: true,
+  },
+  style: {
+    type: String
   }
+
   /* 
     Define your user information fields for the schema here, DO NOT MAKE "username" and "password" fields, since passport will set those for you
   */
