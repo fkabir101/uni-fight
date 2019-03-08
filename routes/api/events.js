@@ -6,4 +6,6 @@ router.route("/create")
 
 router.route("/:id")
   .get(eventController.getEventById)
+router.route("/attend")
+  .put(eventController.addAttendat)
 module.exports = router

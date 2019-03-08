@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom';
+
 import InputField from './inputfield'
 import SelectField from "./selectField";
 import CheckBox from "./checkbox";
@@ -24,10 +26,13 @@ class Form extends Component {
       end:"",
       category:[],
       location:"",
-      streamLink:""
+      streamLink:"",
+      creator:""
     };
   }
-
+  componentDidMount(){
+    this.setState({creator:sessionStorage.getItem("id")})
+  }
   updateValue = event =>{
     this.setState({[event.target.id]: event.target.value});
   }
@@ -148,5 +153,5 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default withRouter(Form);
 
