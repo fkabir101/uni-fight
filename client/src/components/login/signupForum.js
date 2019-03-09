@@ -54,7 +54,6 @@ class SignUpForum extends Component {
   
 
   render() {
-    // If Signup was a success, take them to the Login page
     if (this.state.success) {
     //if(this.state.success) {
       return <Redirect to="/" />

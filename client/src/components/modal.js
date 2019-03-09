@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Modal from 'react-bootstrap/Modal'
 import { Button } from 'react-bootstrap';
+import API from "../utils/api";
 
 //must install npm install react-bootstrap bootstrap
 
@@ -24,6 +25,23 @@ class ModalComponent extends Component {
     this.setState({ show: true });
   }
 
+  // delete = (e) => {
+  //   e.preventDefault();
+  // API
+  //   .remove()
+  //   .then(res => {
+  //     console.log(res.data);
+  //     sessionStorage.removeItem("user");
+  //     sessionStorage.removeItem("email");
+  //     sessionStorage.removeItem("id");
+  //     this.props.loginCheck();
+
+  //     this.setState({isLoggedIn: false});
+  //     localStorage.clear();
+  //     this.props.history.push('/login');
+  //   })
+  // }
+
   render() {
     return (
       <>
@@ -42,7 +60,7 @@ class ModalComponent extends Component {
               {this.props.negative}
             </Button>
             <Button variant={this.props.primColor} 
-            onClick={this.handleClose}>
+            onClick={this.delete}>
               {this.props.affirmative}
             </Button>
           </Modal.Footer>
