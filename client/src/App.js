@@ -8,15 +8,21 @@ import Login from "./components/login/loginMaine"
 import EventsPage from "./components/Events/eventspage";
 import UserPage from "./components/userPage/userMaine"
 import SingleEventPage from "./pages/singleEventPage";
+import ThemeSaver from "./components/themeswitcher/themeSaver";
 
 import API from './utils/api';
 
 class App extends Component {
   state = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    savedTheme: ""
   }
   componentDidMount() {
     this.loginCheck();
+    const cachedTheme = JSON.parse(localStorage.getItem("cachedTheme"));
+    this.setState({
+      savedTheme: cachedTheme
+    })
   }
 
   loginCheck = () => {
@@ -56,6 +62,7 @@ class App extends Component {
       <Router>
         <div>
           <Header isLoggedIn={this.state.isLoggedIn} loginCheck={this.loginCheck}/>
+          <ThemeSaver stylePath={this.state.savedTheme}/>
           <Switch>
             <Route exact path="/" render={() => <MainPage isLoggedIn={this.state.isLogged}/>}/>
             <Route exact path="/create" render={() => <Form isLoggedIn={this.state.isLogged}/>}/>
