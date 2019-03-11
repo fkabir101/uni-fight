@@ -68,7 +68,7 @@ class App extends Component {
             <Route exact path="/create" render={() => <Form isLoggedIn={this.state.isLogged}/>}/>
             <Route exact path="/login" render={() => <Login loginCheck={this.loginCheck}/>}/>
             <Route exact path="/events" render={() => <EventsPage isLoggedIn={this.state.isLogged}/>}/>
-            <Route exact path="/user" render={() => <UserPage isLoggedIn={this.state.isLogged}/>}/>
+            <Route path="/user" render={() => <UserPage isLoggedIn={this.state.isLogged}/>}/>
             <Route exact path="/events/:id" component={SingleEventPage}/>
           </Switch>
           <Footer />

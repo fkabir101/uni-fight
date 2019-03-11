@@ -32,21 +32,22 @@ router
     res.json(false);
   })
 
-// Matches with "/api/user/:id"
 router
-  .route('/:id')
-  .get(usersController.findById)
-  .put(usersController.update)
+  .route('/remove')
   .delete(usersController.remove);
-
-router
-  .route('/:id')
-  .get(usersController.findById)
-  .put(usersController.update);
 
 // register a new user ("/api/user/register")
 router
   .route('/register')
   .post(usersController.register);
+
+
+// Matches with "/api/user/:id"
+router
+.route('/:id')
+.get(usersController.findById)
+.put(usersController.update)
+.delete(usersController.remove);
+
 
 module.exports = router;

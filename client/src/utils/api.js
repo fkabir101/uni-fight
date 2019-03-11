@@ -22,6 +22,13 @@ export default {
   logout: function() {
     return axios.get('/api/users/logout');
   },
+  //to delete account
+  remove: function() {
+    return axios.delete('/api/users/remove');
+  },
+  removeCreatedEvents: function() {
+    return axios.delete('api/events/removeByCreatorId');
+  },
   register: function(userInfo) {
     return axios.post("/api/users/register", userInfo);
   },
