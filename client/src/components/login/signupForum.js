@@ -11,11 +11,11 @@ class SignUpForum extends Component {
     password: "",
     confirmPassword: ""
   }
-  
+
   handleInputChange = e => {
     const { name, value } = e.target;
     this.setState({
-      [name] : value
+      [name]: value
     })
   }
 
@@ -24,35 +24,31 @@ class SignUpForum extends Component {
     e.preventDefault();
     if (this.state.confirmPassword === this.state.password) {
       API
-      .register({ username: this.state.username, email:this.state.email, password: this.state.password })
-      .then(res => {
-        console.log(res.data);
-       
-        sessionStorage.setItem("user", res.data.username);
-        sessionStorage.setItem("email", res.data.email);
-        sessionStorage.setItem("id", res.data._id);
-        
-        window.location.reload();
-        this.props.history.push('/');
-       
-        
+        .register({ username: this.state.username, email: this.state.email, password: this.state.password })
+        .then(res => {
+          console.log(res.data);
 
-      })
-      .catch(err => console.log(err.response.data));
+          sessionStorage.setItem("user", res.data.username);
+          sessionStorage.setItem("email", res.data.email);
+          sessionStorage.setItem("id", res.data._id);
+          window.location.reload();
+          this.props.history.push('/');
+        })
+        .catch(err => console.log(err.response.data));
     }
 
     else {
       alert("Passwords did not match, please try again");
     }
-    
+
   }
 
 
-  
+
 
   render() {
     if (this.state.success) {
-    //if(this.state.success) {
+      //if(this.state.success) {
       return <Redirect to="/" />
       //this.props.history.push('/')
     }
@@ -82,7 +78,7 @@ class SignUpForum extends Component {
                 className="form-control"
                 placeholder="Enter Your Email" />
               {/* <small id="emailHelp" className="form-text text-muted">Enter your Email</small> */}
-              </div>
+            </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input

@@ -4,8 +4,6 @@ import { Button } from 'react-bootstrap';
 import API from "../utils/api";
 import { withRouter } from 'react-router';
 
-//must install npm install react-bootstrap bootstrap
-
 class ModalComponent extends Component {
   constructor(props, context) {
     super(props, context);

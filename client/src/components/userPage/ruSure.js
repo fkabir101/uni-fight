@@ -1,6 +1,4 @@
 import React, {Component} from "react";
-//import InputField from "../form/inputfield";
-//import Button from "../button"
 
 class RUSure extends Component {
   constructor() {

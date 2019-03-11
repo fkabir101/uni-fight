@@ -2,7 +2,6 @@ import React from "react";
 
 
 function ExpandedEventCard(props) {
-  console.log(props);
 
   return (
     <div className="card col-12">
@@ -16,6 +15,16 @@ function ExpandedEventCard(props) {
           </li>
           <li>
             <strong>Event Info:</strong> {props.info}
+          </li>
+          <li>
+            <strong>Categories:</strong> {props.category}
+          </li>
+          <li>
+            <strong>Event Creator:</strong> {props.creator}
+          </li>
+          <li>
+            <strong>Start Date:</strong> {props.start}
+            <strong>End Date:</strong> {props.end}
           </li>
         </ul>
       </div>
