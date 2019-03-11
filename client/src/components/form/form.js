@@ -65,8 +65,6 @@ class Form extends Component {
   onClickFunction = ()=>{
     API.createEvent(this.state)
       .then(res => {
-        console.log(res.data)
-        // THIS LINE BRINGS YOU TO HOMEPAGE
         this.props.history.push('/')
       })
       .catch(error => console.log(error))

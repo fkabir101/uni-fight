@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import Modal from 'react-bootstrap/Modal'
 import { Button } from 'react-bootstrap';
-
-//must install npm install react-bootstrap bootstrap
+import API from "../utils/api";
+import { withRouter } from 'react-router';
 
 class ModalComponent extends Component {
   constructor(props, context) {
@@ -24,6 +24,25 @@ class ModalComponent extends Component {
     this.setState({ show: true });
   }
 
+  delete = (e) => {
+    e.preventDefault();
+    const userId = sessionStorage.getItem("id");
+  API
+    //.removeCreatedEvents(userId)
+    .remove(userId)
+    .then(res => {
+      console.log(res.data);
+      sessionStorage.removeItem("user");
+      sessionStorage.removeItem("email");
+      sessionStorage.removeItem("id");
+      // this.props.loginCheck();
+      this.setState({isLoggedIn: false});
+      localStorage.clear();
+      window.location.reload();
+      this.props.history.push('/login');
+   })
+  }
+
   render() {
     return (
       <>
@@ -42,7 +61,7 @@ class ModalComponent extends Component {
               {this.props.negative}
             </Button>
             <Button variant={this.props.primColor} 
-            onClick={this.handleClose}>
+            onClick={this.delete}>
               {this.props.affirmative}
             </Button>
           </Modal.Footer>
@@ -52,4 +71,4 @@ class ModalComponent extends Component {
   }
 }
 
-export default ModalComponent;
+export default withRouter(ModalComponent);

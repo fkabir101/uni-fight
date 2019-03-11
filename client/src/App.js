@@ -8,15 +8,21 @@ import Login from "./components/login/loginMaine"
 import EventsPage from "./components/Events/eventspage";
 import UserPage from "./components/userPage/userMaine"
 import SingleEventPage from "./pages/singleEventPage";
+import ThemeSaver from "./components/themeswitcher/themeSaver";
 
 import API from './utils/api';
 
 class App extends Component {
   state = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    savedTheme: "/styles/defaultstyle.css"
   }
   componentDidMount() {
     this.loginCheck();
+    const cachedTheme = JSON.parse(localStorage.getItem("cachedTheme"));
+    this.setState({
+      savedTheme: cachedTheme
+    })
   }
 
   loginCheck = () => {
@@ -55,20 +61,21 @@ class App extends Component {
     return (
       <Router>
         <div>
+        <ThemeSaver stylePath={this.state.savedTheme}/>
           <Header isLoggedIn={this.state.isLoggedIn} loginCheck={this.loginCheck}/>
           <Switch>
             <Route exact path="/" render={() => <MainPage isLoggedIn={this.state.isLogged}/>}/>
             <Route exact path="/create" render={() => <Form isLoggedIn={this.state.isLogged}/>}/>
             <Route exact path="/login" render={() => <Login loginCheck={this.loginCheck}/>}/>
             <Route exact path="/events" render={() => <EventsPage isLoggedIn={this.state.isLogged}/>}/>
-            <Route exact path="/user" render={() => <UserPage isLoggedIn={this.state.isLogged}/>}/>
+            <Route path="/user" render={() => <UserPage isLoggedIn={this.state.isLogged}/>}/>
             <Route exact path="/events/:id" component={SingleEventPage}/>
           </Switch>
           <Footer />
         </div>
       </Router>
     );
-  }//else
+  }
   }
 }
 

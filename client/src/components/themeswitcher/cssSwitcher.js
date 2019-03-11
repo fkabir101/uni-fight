@@ -1,29 +1,21 @@
 import React, { Component } from 'react';
 import Button from "../button";
-import API from '../../utils/api';
+import ThemeSaver from "../themeswitcher/themeSaver";
 
 const styles = [
-    'materia',
-    'flatly',
     'cerulean',
     'cosmo',
     'cyborg',
     'darkly',
     'journal',
     'litera',
-    'lumen',
-    'lux',
     'minty',
-    'pulse',
-    'sandstone',
-    'simplex',
     'sketchy',
     'slate',
     'solar',
     'spacelab',
     'superhero',
-    'united',
-    'yeti'
+    'united'
 ];
 class CssSwitcher extends Component {
     state = {
@@ -41,20 +33,18 @@ class CssSwitcher extends Component {
             selected: stylePicked,
             stylePath: `/styles/${stylePicked}/bootstrap.css`
         });
+
     }
 
-    handleThemeSubmit = () => {
-        API.saveTheme(this.state)
-            .then(res => {
-                console.log(res.data)
-            })
-            .catch(error => console.log(error))
+    handleThemeSave = () => {
+        const cachedTheme = this.state.stylePath;
+        localStorage.setItem("cachedTheme", JSON.stringify(cachedTheme));
     }
 
     render() {
         return (
             <React.Fragment>
-                <link rel="stylesheet" type="text/css" href={this.state.stylePath} />
+                <ThemeSaver stylePath={this.state.stylePath} />
                 <select name="selected" onChange={this.handleButtonClick} className="form-control">
                     {styles.map(style => {
                         return (
@@ -64,9 +54,8 @@ class CssSwitcher extends Component {
                 </select>
                 <Button
                     name="Submit"
-                    color="Secondary"
                     clickFunction=
-                    {this.handleThemeSubmit}
+                    {this.handleThemeSave}
                 />
             </React.Fragment>
         )
