@@ -48,8 +48,6 @@ render() {
      
       </div>
 
-      {/* <Route exact path="/events/:userid" component={SingleEventPage}/> */}
-
       </div>
   ) //render
 }
