@@ -23,7 +23,6 @@ class LoginForum extends Component {
     API
       .login({username: this.state.username, password: this.state.password})
       .then(res => {
-        console.log(res.data);
         sessionStorage.setItem("user", res.data.username);
         sessionStorage.setItem("email", res.data.email);
         sessionStorage.setItem("id", res.data._id);
@@ -36,7 +35,6 @@ class LoginForum extends Component {
   }
 
   render() {
-    // If user is logged in, take them to main page
     if (this.state.isLoggedIn) {
       return <Redirect to="/"/>
 
@@ -55,7 +53,6 @@ class LoginForum extends Component {
                 onChange={this.handleInputChange}
                 className="form-control"
                 placeholder="Enter Your Username"/>
-              {/* <small id="usernameHelp" className="form-text text-muted">Enter your username</small> */}
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>

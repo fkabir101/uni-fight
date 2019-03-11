@@ -5,7 +5,7 @@ export default {
     return axios.post('/api/events/create', eventData);
   },
   getEvents: function () {
-    return axios.get("/api/events");
+    return axios.get("/api/events/get");
   },
   getEventById: function (id) {
     return axios.get('/api/events/' + id);
@@ -24,9 +24,6 @@ export default {
   },
   register: function(userInfo) {
     return axios.post("/api/users/register", userInfo);
-  },
-  saveTheme: function(userInfo) {
-    return axios.post("/api/users/saveTheme", userInfo)
   },
   attend: function(attendInfo){
     return axios.put('/api/events/attend', attendInfo);
