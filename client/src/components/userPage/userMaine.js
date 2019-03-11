@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router
 import UserInfo from "./userInfo";
 import ParticipatingEvents from "./participatingEvents";
 import OwnedEvents from "./ownedEvents";
+import ModalComponent from "../modal"
+import CssSwitcher from "../themeswitcher/cssSwitcher"
 
 //import {Redirect} from "react-router-dom";
 
@@ -35,7 +37,7 @@ render() {
             <button type="button" className="btn btn-dark col-12" id="ownEventBtn" onClick={this.OwnedEvents}>Owned Events</button>
           </div>
 
-          <div className = "jumbotron col-8" id="userJumbo">
+          {/* <div className = "jumbotron col-8" id="userJumbo">
           <hr className="my-4"></hr>
 
           <ModalComponent
@@ -49,7 +51,7 @@ render() {
           <CssSwitcher/>
 
           
-          </div>
+          </div> */}
         </div>
 
      <Switch>
