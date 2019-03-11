@@ -1,7 +1,4 @@
-
-
 import React, { Component } from "react";
-//import {Redirect} from "react-router-dom";
 import API from "../../utils/api";
 import { withRouter } from 'react-router';
 
@@ -29,10 +26,7 @@ class RenderNavbar extends Component {
 
   render() {
     console.log("user logged in", this.props.isLoggedIn);
-    // If user isn't logged in, don't let them see this page
     if (this.props.isLoggedIn === false) {
-      // console.log("User is logged out");
-      // console.log(this.state.isLoggedIn);
       return (
         <div>
           <ul className="nav justify-content-end">
@@ -50,9 +44,6 @@ class RenderNavbar extends Component {
       );
     }
     else {
-      // console.log("User is logged in");
-      //console.log(this.state.isLoggedIn);
-      // <h1>You Made it to the main page {this.state.isLoggedIn.username}!</h1>
       return (
         <div>
           <ul className="nav justify-content-end">

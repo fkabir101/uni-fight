@@ -2,7 +2,6 @@ import React from "react";
 
 
 function ExpandedEventCard(props) {
-  console.log(props);
 
   return (
     <div className="card col-12">

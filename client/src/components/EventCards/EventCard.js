@@ -2,7 +2,7 @@ import React from "react";
 import "./style.css";
 
 function EventCard(props) {
-  // console.log(props);
+ 
 
   return (
     <div className="card">

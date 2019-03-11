@@ -9,10 +9,7 @@ class MainPage extends Component {
     Events: []
   };
 
-
-
   componentDidMount = () => {
-
     API.getEvents()
       .then(res => this.setState({
         Events: res.data
@@ -21,6 +18,7 @@ class MainPage extends Component {
       .then(console.log(this.state.Events))
       .catch(err => console.log(err));
   }
+  
   render() {
     return (
       <Wrapper>

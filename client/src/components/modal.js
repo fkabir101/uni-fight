@@ -2,8 +2,6 @@ import React, {Component} from "react";
 import Modal from 'react-bootstrap/Modal'
 import { Button } from 'react-bootstrap';
 
-//must install npm install react-bootstrap bootstrap
-
 class ModalComponent extends Component {
   constructor(props, context) {
     super(props, context);

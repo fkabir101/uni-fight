@@ -3,8 +3,6 @@ import API from "../utils/api";
 import Button from "../components/button"
 import ReactPlayer from 'react-player'
 
-// 5c7ff9079bbb861570ddb03d use this address for test without twitch
-// 5c8143515d426908b8e8a524 use this address for test with twitch
 class SingleEventPage extends Component {
   state = {
     categorys: [],
@@ -19,7 +17,6 @@ class SingleEventPage extends Component {
     streamLink: "",
   };
   componentDidMount = () =>{
-    //(res => this.setState({ eventObject: res.data }))
     API.getEventById(this.props.match.params.id)
       .then(res => this.setState({ 
         categorys: res.data.category,
