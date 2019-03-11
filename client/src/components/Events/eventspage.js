@@ -18,7 +18,7 @@ class EventsPage extends Component {
       }))
       .then(console.log(this.state.Events))
       .catch(err => console.log(err));
-  }
+  }c
   render() {
     return (
       <Wrapper>
