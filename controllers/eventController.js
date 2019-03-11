@@ -63,5 +63,12 @@ module.exports = {
     console.log(req.query);
     db.Events.find(req.query)
     .then(dbModel => res.json(dbModel))
+  },
+  findByUser: function(req, res) {
+    db.Events.find({
+      "attendees": {$in: mongoose.Types.ObjectId(req.user._id)}
+    })
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.json(err));
   }
 };

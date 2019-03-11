@@ -9,6 +9,9 @@ router.route("/search")
   .get(eventController.findBySearch)
 router.route("/get")
   .get(eventController.findAll);
+router.route("/user")
+  .get(eventController.findByUser);
+
 router.route("/:id")
   .get(eventController.getEventById)
 module.exports = router
