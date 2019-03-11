@@ -103,6 +103,7 @@ class Form extends Component {
           />
           <SelectField 
             fieldName="Location"
+            default="Location"
             id="location" 
             options={locations}
             onChangeValue = {this.updateValue}
@@ -110,8 +111,8 @@ class Form extends Component {
           <label>Categories:</label> <br/>
           {categorys.map(category => (
             <CheckBox 
-              key={category.name}
-              fieldName={category.name}
+              key={category.option}
+              fieldName={category.option}
               onChangeValue = {this.getCheckBoxValue}
             />
           ))}

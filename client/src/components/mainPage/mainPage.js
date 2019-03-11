@@ -25,7 +25,7 @@ class MainPage extends Component {
         {this.state.Events.length ? this.state.Events.map(eventData => {
           return (
             <EventCard
-              key={eventData.id}
+              key={eventData._id}
               name={eventData.name}
               location={eventData.location}
               creator={eventData.creator}
