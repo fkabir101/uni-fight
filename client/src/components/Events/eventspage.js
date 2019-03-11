@@ -1,26 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Wrapper from "../Wrapper/index";
-import ExpandedEventCard from "../Events/expandedevents";
-import trashData from "../../trashData.json";
+import ExpandedEventCard from "./expandedevents";
+import API from '../../utils/api';
 
 
-function EventsPage() {
-  return (
-    <Wrapper>
-      {trashData.map(eventData => {
-            console.log(eventData);
+class EventsPage extends Component {
+  state = {
+    Events: []
+  };
 
-        return (
-          <ExpandedEventCard
-            key={eventData.id}
-            name={eventData.eventName}
-            location={eventData.eventLocation}
-            info={eventData.eventInfo}
-          />
-        );
-      })}
-    </Wrapper>
-  );
+  componentDidMount = () => {
+
+    API.getEvents()
+      .then(res => this.setState({
+        Events: res.data
+
+      }))
+      .then(console.log(this.state.Events))
+      .catch(err => console.log(err));
+  }
+  render() {
+    return (
+      <Wrapper>
+        {this.state.Events.length ? this.state.Events.map(eventData => {
+          return (
+            <ExpandedEventCard
+              key={eventData.id}
+              name={eventData.name}
+              location={eventData.location}
+              info={eventData.info}
+              category={eventData.category}
+              creator={eventData.creator}
+              start={eventData.start}
+              end={eventData.end}
+            />
+          );
+        }) : ""}
+      </Wrapper>
+    );
+  }
 }
 
 export default EventsPage;

@@ -15,8 +15,14 @@ function EventCard(props) {
             <strong>Location:</strong> {props.location}
           </li>
           <li>
-            <strong>Event Info:</strong> {props.info}
+            <strong>Creator:</strong> {props.creator}
           </li>
+          <li>
+            <strong>Start Time:</strong> {props.start}
+            <n/>
+            <strong>End Time:</strong> {props.end}
+          </li>
+          <strong>Start Time:</strong> {props.start}
         </ul>
       </div>
     </div>

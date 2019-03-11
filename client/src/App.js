@@ -15,7 +15,7 @@ import API from './utils/api';
 class App extends Component {
   state = {
     isLoggedIn: false,
-    savedTheme: ""
+    savedTheme: "/styles/defaultstyle.css"
   }
   componentDidMount() {
     this.loginCheck();
@@ -61,8 +61,8 @@ class App extends Component {
     return (
       <Router>
         <div>
+        <ThemeSaver stylePath={this.state.savedTheme}/>
           <Header isLoggedIn={this.state.isLoggedIn} loginCheck={this.loginCheck}/>
-          <ThemeSaver stylePath={this.state.savedTheme}/>
           <Switch>
             <Route exact path="/" render={() => <MainPage isLoggedIn={this.state.isLogged}/>}/>
             <Route exact path="/create" render={() => <Form isLoggedIn={this.state.isLogged}/>}/>
