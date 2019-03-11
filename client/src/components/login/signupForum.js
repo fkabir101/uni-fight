@@ -31,14 +31,11 @@ class SignUpForum extends Component {
         sessionStorage.setItem("user", res.data.username);
         sessionStorage.setItem("email", res.data.email);
         sessionStorage.setItem("id", res.data._id);
-        //this.props.loginCheck();
-      // this.setState({ isLoggedIn: res.data })
-      window.location.reload();
-      this.props.history.push('/');
+        
+        window.location.reload();
+        this.props.history.push('/');
        
         
-        //this.props.loginCheck();
-        //this.setState({ success: res.data })
 
       })
       .catch(err => console.log(err.response.data));
