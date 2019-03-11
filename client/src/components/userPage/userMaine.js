@@ -37,21 +37,7 @@ render() {
             <button type="button" className="btn btn-dark col-12" id="ownEventBtn" onClick={this.OwnedEvents}>Owned Events</button>
           </div>
 
-          {/* <div className = "jumbotron col-8" id="userJumbo">
-          <hr className="my-4"></hr>
-
-          <ModalComponent
-          btnName= "DeleteAccount"
-          title= "Delete Account"
-          msg= "Are you sure you want to delete your account?"
-          negative= "No! DON'T Delete My Acount"
-          affirmative= "Yes! Delete My Account."
-          primColor="danger"
-          secColor= "secondary" />
-          <CssSwitcher/>
-
           
-          </div> */}
         </div>
 
      <Switch>
