@@ -51,12 +51,17 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  addAttendat: function (req, res) {
-    db.Events.findByIdAndUpdate(req.body.eventId, { $push: { "attendees": req.body.userId } }, { new: true, upsert: true })
+  addAttendat : function(req, res){
+      db.Events.findByIdAndUpdate(req.body.eventId, {$push: {"attendees": req.body.userId}}, {new: true, upsert: true})
       .then(dbModel => res.json(dbModel))
       .catch(err => {
         console.log(err);
         res.status(422).json(err);
       })
+  },
+  findBySearch : function(req, res){
+    console.log(req.query);
+    db.Events.find(req.query)
+    .then(dbModel => res.json(dbModel))
   }
 };

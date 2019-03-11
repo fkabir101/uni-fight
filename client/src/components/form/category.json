@@ -1,21 +1,21 @@
 [
   {
-    "name": "Street Fighter 5",
+    "option": "Street Fighter 5",
     "id": "SF5",
     "logoRef": "../../../public/images/SFV_Logo.png"
   },
   {
-    "name": "Tekken 7",
+    "option": "Tekken 7",
     "id": "T7",
     "logoRef": "../../../public/images/T7_Logo.png"
   },
   {
-    "name": "Super Smash Bros. Ultimate",
+    "option": "Super Smash Bros. Ultimate",
     "id": "SSMU",
     "logoRef": "../../../public/images/SSMU_Logo.png"
   },
   {
-    "name": "Dragon Ball Fighterz",
+    "option": "Dragon Ball Fighterz",
     "id": "DBFZ",
     "logoRef": "../../../public/images/DBFZ_Logo.jpg"
   }
