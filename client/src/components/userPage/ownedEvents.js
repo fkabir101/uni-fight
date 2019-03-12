@@ -18,8 +18,7 @@ class OwnedEvents extends Component {
     const searchObject = {
       creator : CreatorID
     }
-    API.
-    search(searchObject)
+    API.search(searchObject)
       .then(res =>{
         this.setState({events: res.data})
       })

@@ -15,7 +15,7 @@ class MainPage extends Component {
         Events: res.data
 
       }))
-      .then(console.log(this.state.Events))
+    //  .then(console.log(this.state.Events))
       .catch(err => console.log(err));
   }
   

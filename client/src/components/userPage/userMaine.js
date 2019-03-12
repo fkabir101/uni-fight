@@ -1,11 +1,9 @@
 import React, {Component} from "react";
 import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
-//import api from "../../utils/api";
 import UserInfo from "./userInfo";
 import ParticipatingEvents from "./participatingEvents";
 import OwnedEvents from "./ownedEvents";
-import ModalComponent from "../modal"
-import CssSwitcher from "../themeswitcher/cssSwitcher"
+
 
 //import {Redirect} from "react-router-dom";
 

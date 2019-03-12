@@ -2,12 +2,7 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import Wrapper from "../Wrapper/index";
 import ExpandedEventCard from "../Events/expandedevents";
-import SelectField from "../form/selectField"
-import InputField from "../form/inputfield"
-import Button from "../button"
 import API from "../../utils/api"
-import locations from "../form/locations.json"
-import categorys from "../form/category.json"
 
 class ParticipatingEvents extends Component {
   state = {
@@ -18,13 +13,8 @@ class ParticipatingEvents extends Component {
   }
   
   componentDidMount() {
-    const PartID = sessionStorage.getItem("id");
-    // const searchObject = {
-    //   attendees : PartID
-    // }
-    API.
-    findPart()
-      .then(res =>{
+    API
+    .findPart().then(res =>{
         this.setState({events: res.data})
       })
       .catch(err =>{
@@ -57,9 +47,6 @@ class ParticipatingEvents extends Component {
           }
         </Wrapper>
         
-
-
-
         </div>
     
     )
