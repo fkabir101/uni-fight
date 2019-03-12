@@ -4,7 +4,7 @@ import ThemeSaver from "../themeswitcher/themeSaver";
 
 const styles = [
     'cerulean',
-    'cosmo',
+    'Alex',
     'cyborg',
     'darkly',
     'journal',
