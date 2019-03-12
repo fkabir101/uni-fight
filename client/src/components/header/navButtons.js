@@ -25,7 +25,6 @@ class RenderNavbar extends Component {
   
 
   render() {
-    console.log("user logged in", this.props.isLoggedIn);
     if (this.props.isLoggedIn === false) {
       return (
         <div>

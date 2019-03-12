@@ -29,7 +29,7 @@ class App extends Component {
     API
       .loginCheck()
       .then(res => {
-        console.log(res.data);
+       // console.log(res.data);
         this.setState({
           isLoggedIn: res.data.isLoggedIn, username: res.data.username, email: res.data.email 
         })

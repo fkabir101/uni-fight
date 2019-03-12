@@ -37,5 +37,8 @@ export default {
   },
   search: function(search){
     return axios.get(`/api/events/search`, {params: search})
+  },
+  findPart: function(search) {
+    return axios.get(`/api/events/user`)
   }
 }
