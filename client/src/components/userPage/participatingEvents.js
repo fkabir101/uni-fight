@@ -20,6 +20,7 @@ class ParticipatingEvents extends Component {
       savedTheme: cachedTheme
     })
     API
+    //finds particpants route goes to utils/api
     .findPart().then(res =>{
         this.setState({events: res.data})
       })

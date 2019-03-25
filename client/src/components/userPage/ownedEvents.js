@@ -39,7 +39,8 @@ class OwnedEvents extends Component {
   render() {
 
     return (
-      <div className="jumbotron col-8" id="userJumbo">
+      
+        <div className="jumbotron col-8" id="userJumbo">
         <h3>Events You Have Created</h3>
         <hr className="my-4"></hr>
         <Wrapper>
