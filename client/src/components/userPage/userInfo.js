@@ -3,7 +3,7 @@ import ModalComponent from "../modal";
 import CssSwitcher from "../themeswitcher/cssSwitcher";
 import { withRouter } from 'react-router';
 import ThemeSaver from "../themeswitcher/themeSaver";
-import Wrapper from "../Wrapper/index";
+
 
 
 class UserInfo extends Component {

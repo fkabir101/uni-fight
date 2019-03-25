@@ -21,7 +21,7 @@ class MainPage extends Component {
   render() {
     return (
       <Wrapper>
-        {this.state.Events.length ? this.state.Events.map(eventData => {
+        {this.state.Events.length ? this.state.Events.reverse().map(eventData => {
           return (
             <EventCard
               key={eventData._id}

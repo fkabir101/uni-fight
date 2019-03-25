@@ -26,7 +26,7 @@ class CssSwitcher extends Component {
     }
     
     handleButtonClick = (event) => {
-        const { name, value } = event.target;
+        const { value } = event.target;
 
         // get selected style
         const stylePicked = this.state.styles.find(style => style === value);

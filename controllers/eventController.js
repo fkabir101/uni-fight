@@ -11,8 +11,7 @@ module.exports = {
   findAll: function (req, res) {
     db.Events
       .find()
-      .limit(4)
-      .sort({ startUnix: 1 })
+      .limit(9)
       .then(dbModel => {
         res.json(dbModel)
       })
