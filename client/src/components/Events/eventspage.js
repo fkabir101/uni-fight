@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import Wrapper from "../Wrapper/index";
 import ExpandedEventCard from "../Events/expandedevents";
-import SelectField from "../form/selectField"
-import InputField from "../form/inputfield"
-import Button from "../button"
+import SelectField from "../form/selectField";
+import InputField from "../form/inputfield";
+import Button from "../button";
 
-import locations from "../form/locations.json"
-import categorys from "../form/category.json"
+import locations from "../form/locations.json";
+import categorys from "../form/category.json";
 
-import API from "../../utils/api"
+import API from "../../utils/api";
+
 class EventsPage extends Component{
   state = {
     currentSearchField: "",

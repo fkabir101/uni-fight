@@ -9,8 +9,28 @@ import EventsPage from "./components/Events/eventspage";
 import UserPage from "./components/userPage/userMaine"
 import SingleEventPage from "./pages/singleEventPage";
 import ThemeSaver from "./components/themeswitcher/themeSaver";
-
 import API from './utils/api';
+
+// var options = {
+//   enableHighAccuracy: true,
+//   timeout: 50000,
+//   maximumAge: 0
+// };
+
+// function success(pos) {
+//   var crd = pos.coords;
+
+//   console.log('Your current position is:');
+//   console.log(`Latitude : ${crd.latitude}`);
+//   console.log(`Longitude: ${crd.longitude}`);
+//   console.log(`More or less ${crd.accuracy} meters.`);
+// }
+
+// function error(err) {
+//   console.warn(`ERROR(${err.code}): ${err.message}`);
+// }
+
+// navigator.geolocation.getCurrentPosition(success, error, options);
 
 class App extends Component {
   state = {

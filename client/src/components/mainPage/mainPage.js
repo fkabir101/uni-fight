@@ -13,7 +13,6 @@ class MainPage extends Component {
     API.getEvents()
       .then(res => this.setState({
         Events: res.data
-
       }))
     //  .then(console.log(this.state.Events))
       .catch(err => console.log(err));
@@ -22,7 +21,7 @@ class MainPage extends Component {
   render() {
     return (
       <Wrapper>
-        {this.state.Events.length ? this.state.Events.map(eventData => {
+        {this.state.Events.length ? this.state.Events.reverse().map(eventData => {
           return (
             <EventCard
               key={eventData._id}

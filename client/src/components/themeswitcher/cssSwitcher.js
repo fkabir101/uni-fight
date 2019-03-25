@@ -17,14 +17,16 @@ const styles = [
     'superhero',
     'united'
 ];
+
 class CssSwitcher extends Component {
     state = {
         selected: styles[0],
         styles: styles,
         stylePath: '/styles/defaultstyle.css'
     }
+    
     handleButtonClick = (event) => {
-        const { name, value } = event.target;
+        const { value } = event.target;
 
         // get selected style
         const stylePicked = this.state.styles.find(style => style === value);

@@ -3,16 +3,22 @@ import {withRouter} from 'react-router-dom';
 import Wrapper from "../Wrapper/index";
 import ExpandedEventCard from "../Events/expandedevents";
 import API from "../../utils/api"
+import ThemeSaver from "../themeswitcher/themeSaver";
 
 class ParticipatingEvents extends Component {
   state = {
-    events:[]
+    events:[],
+    savedtheme: "styles/defaultstyle.css"
   }
   clickCard = (event) =>{
     this.props.history.push(`/events/${event.target.id}`)
   }
   
   componentDidMount() {
+    const cachedTheme = JSON.parse(localStorage.getItem("cachedTheme"));
+    this.setState({
+      savedTheme: cachedTheme
+    })
     API
     //finds particpants route goes to utils/api
     .findPart().then(res =>{
@@ -30,6 +36,8 @@ class ParticipatingEvents extends Component {
         <h3>Events You Signed Up For</h3>
        
         <Wrapper>
+        <ThemeSaver stylePath={this.state.savedTheme} />
+
           {this.state.events !== 0 ? 
           (this.state.events.map(event =>
             <ExpandedEventCard
