@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router
 import UserInfo from "./userInfo";
 import ParticipatingEvents from "./participatingEvents";
 import OwnedEvents from "./ownedEvents";
+//import ThemeSaver from "../../components/themeswitcher/themeSaver.js";
+
 
 
 //import {Redirect} from "react-router-dom";
@@ -37,7 +39,7 @@ render() {
 
           
         </div>
-
+        {/* <ThemeSaver stylePath={this.state.savedTheme}/> */}
      <Switch>
       <Route exact path="/user/" render={() => <UserInfo /> } />
       <Route exact path={`${this.props.match.url}/owned`} render={() => <OwnedEvents />} />
