@@ -30,7 +30,7 @@ module.exports = {
   findByCreatorId: function (req, res) {
     db.Events
       .findById(req.params.creator)
-      .then(dbModel => res.json({ dbModel}))
+      .then(dbModel => res.json({ dbModel }))
       .catch(err => res.status(422).json(err));
   },
   update: function (req, res) {
@@ -52,83 +52,40 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  //Where someone is added to an event
-  // addAttendat : function(req, res){
-  //     db.Events.findByIdAndUpdate(req.body.eventId, {$push: {"attendees": req.body.userId}}, {new: true, upsert: true})
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => {
-  //       console.log(err);
-  //       res.status(422).json(err);
-  //     })
-  // },
-
-  addAttendat : function(req, res){
+  addAttendat: function (req, res) {
     db.Events.findById(req.body.eventId)
-    .then(dbModel => {
-      console.log(dbModel.attendees);
-      console.log("userID"+req.body.userId);
-      let isIn = false;
-      for (let i=0; i<dbModel.attendees.length; i++) {
-        let rope = dbModel.attendees[i].toString();
-        console.log(rope);
-        if (rope === req.body.userId)
-        {isIn = true}
-      }
+      .then(dbModel => {
+        let isIn = false;
+        for (let i = 0; i < dbModel.attendees.length; i++) {
+          let rope = dbModel.attendees[i].toString();
+          if (rope === req.body.userId) { isIn = true }
+        }
         if (isIn) {
           res.json(dbModel);
         }
         else if (dbModel.attendees.length >= dbModel.limit) {
           res.json(dbModel);
         }
-      else {
-      db.Events.findByIdAndUpdate(req.body.eventId, {$push: {"attendees": req.body.userId}}, {new: true, upsert: true})
-      .then(dbModel => res.json(dbModel))
-      .catch(err => {
-        console.log(err);
-        res.status(422).json(err);
+        else {
+          db.Events.findByIdAndUpdate(req.body.eventId, { $push: { "attendees": req.body.userId } }, { new: true, upsert: true })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => {
+              console.log(err);
+              res.status(422).json(err);
+            })
+        }
       })
-    }
-    })
-  
-},
-
-
-
-  // addAttendat : function(req, res){
-  //   db.Events.findbyId(req.body.eventId)
-  //    // "attendees": {$in: mongoose.Types.ObjectId(req.user._id)}
-  //   .then(dbModel =>{
-  //     console.log(dbModel);
-  //     res.json({status:true});
-  //     // if (/*dbModel.includes(req.body.eventId)*/ null) {
-  //     //   //if dbModel has user send an alert they already joined this event
-  //     // }
-  //     // else if (/*attendees.length >= limit*/ null) {
-  //     //   //if event is full send an alert the event is full
-  //     // }
-  //     // else {
-  //     //   //if user is not in event and event is not full
-  //     //   db.Events.findByIdAndUpdate(req.body.eventId, {$push: {"attendees": req.body.userId}}, {new: true, upsert: true})
-  //     //   .then(dbModel => res.json(dbModel))
-  //     //   .catch(err => {
-  //     //     console.log(err);
-  //     //     res.status(422).json(err);
-  //     //   })
-  //     // }//else
-
-  //   })//.then
-//},
-  findBySearch : function(req, res){
+  },
+  findBySearch: function (req, res) {
     console.log(req.query);
     db.Events.find(req.query)
-    .then(dbModel => res.json(dbModel))
+      .then(dbModel => res.json(dbModel))
   },
-  //this searches for a user in the partipants
-  findByUser: function(req, res) {
+  findByUser: function (req, res) {
     db.Events.find({
-      "attendees": {$in: mongoose.Types.ObjectId(req.user._id)}
+      "attendees": { $in: mongoose.Types.ObjectId(req.user._id) }
     })
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.json(err));
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.json(err));
   }
 };
