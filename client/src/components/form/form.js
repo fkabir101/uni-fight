@@ -63,12 +63,18 @@ class Form extends Component {
   }
 
   onClickFunction = ()=>{
-    API.createEvent(this.state)
+    const unixStart = this.state.startUnix;
+    const unixEnd = Moment(this.state.end, "ddd MMM DD YYYY").format("X");
+    if(unixEnd >= unixStart){
+      API.createEvent(this.state)
       .then(res => {
         this.props.history.push('/')
       })
-      .catch(error => console.log(error))
-    
+      .catch(error => console.log(error)) 
+    }
+    else{
+      alert("Error: Start date takes place before end date");
+    }
   }
 
   render(){
