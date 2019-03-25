@@ -38,6 +38,7 @@ export default {
   search: function(search){
     return axios.get(`/api/events/search`, {params: search})
   },
+  //finds particpant route goes to api/events then look for 'user'
   findPart: function(search) {
     return axios.get(`/api/events/user`)
   }

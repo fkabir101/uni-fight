@@ -14,6 +14,7 @@ class ParticipatingEvents extends Component {
   
   componentDidMount() {
     API
+    //finds particpants route goes to utils/api
     .findPart().then(res =>{
         this.setState({events: res.data})
       })

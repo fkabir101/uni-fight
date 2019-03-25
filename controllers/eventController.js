@@ -30,7 +30,7 @@ module.exports = {
   findByCreatorId: function (req, res) {
     db.Events
       .findById(req.params.creator)
-      .then(dbModel => res.json({ dbModel}))
+      .then(dbModel => res.json({ dbModel }))
       .catch(err => res.status(422).json(err));
   },
   update: function (req, res) {
@@ -52,24 +52,40 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  addAttendat : function(req, res){
-      db.Events.findByIdAndUpdate(req.body.eventId, {$push: {"attendees": req.body.userId}}, {new: true, upsert: true})
-      .then(dbModel => res.json(dbModel))
-      .catch(err => {
-        console.log(err);
-        res.status(422).json(err);
+  addAttendat: function (req, res) {
+    db.Events.findById(req.body.eventId)
+      .then(dbModel => {
+        let isIn = false;
+        for (let i = 0; i < dbModel.attendees.length; i++) {
+          let rope = dbModel.attendees[i].toString();
+          if (rope === req.body.userId) { isIn = true }
+        }
+        if (isIn) {
+          res.json(dbModel);
+        }
+        else if (dbModel.attendees.length >= dbModel.limit) {
+          res.json(dbModel);
+        }
+        else {
+          db.Events.findByIdAndUpdate(req.body.eventId, { $push: { "attendees": req.body.userId } }, { new: true, upsert: true })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => {
+              console.log(err);
+              res.status(422).json(err);
+            })
+        }
       })
   },
-  findBySearch : function(req, res){
+  findBySearch: function (req, res) {
     console.log(req.query);
     db.Events.find(req.query)
-    .then(dbModel => res.json(dbModel))
+      .then(dbModel => res.json(dbModel))
   },
-  findByUser: function(req, res) {
+  findByUser: function (req, res) {
     db.Events.find({
-      "attendees": {$in: mongoose.Types.ObjectId(req.user._id)}
+      "attendees": { $in: mongoose.Types.ObjectId(req.user._id) }
     })
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.json(err));
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.json(err));
   }
 };

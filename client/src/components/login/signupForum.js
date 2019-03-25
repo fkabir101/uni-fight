@@ -25,17 +25,27 @@ class SignUpForum extends Component {
     if (this.state.confirmPassword === this.state.password) {
       API
         .register({ username: this.state.username, email: this.state.email, password: this.state.password })
-        .then(res => {
-          console.log(res.data);
+        .then(() =>{
+          API
+            .login({ username: this.state.username, password: this.state.password })
+            .then(res => {
+              console.log("YOU MADE IT HERE!")
+              sessionStorage.setItem("user", res.data.username);
+              sessionStorage.setItem("email", res.data.email);
+              sessionStorage.setItem("id", res.data._id);
 
-          sessionStorage.setItem("user", res.data.username);
-          sessionStorage.setItem("email", res.data.email);
-          sessionStorage.setItem("id", res.data._id);
-          window.location.reload();
-          this.props.history.push('/');
-        })
-        .catch(err => console.log(err.response.data));
-    }
+              this.setState({ isLoggedIn: res.data })
+
+              this.props.history.push('/');
+              window.location.reload();
+
+            })
+            .catch(err => console.log(err))
+          }
+        )
+      .catch (err => console.log(err.response.data));
+
+    }// if statement
 
     else {
       alert("Passwords did not match, please try again");

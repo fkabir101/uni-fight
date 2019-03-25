@@ -9,6 +9,7 @@ router.route("/search")
   .get(eventController.findBySearch)
 router.route("/get")
   .get(eventController.findAll);
+  //this route goes to controllers/event controller
 router.route("/user")
   .get(eventController.findByUser);
 
