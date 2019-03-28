@@ -66,6 +66,7 @@ module.exports = {
             });
           });
         }//if dbModel === null
+        
         // else {
         //   alert("Username is taken.  Please try again.");
         // }
