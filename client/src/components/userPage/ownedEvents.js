@@ -57,6 +57,7 @@ class OwnedEvents extends Component {
                 category={event.category}
                 start={event.start}
                 end={event.end}
+                page='user'
               />
             )) :
             (<p></p>)
