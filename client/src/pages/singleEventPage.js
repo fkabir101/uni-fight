@@ -68,6 +68,7 @@ class SingleEventPage extends Component {
       API.leave(attendObject)
         .then(res => this.setState({
           attendNum: res.data.attendees.length,
+          //ADD A REDIRECT
         }))
         .catch(err => console.log(err));
     }
