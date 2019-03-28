@@ -77,13 +77,7 @@ module.exports = {
   },
   removeAttendant: function (req, res) {
     db.Events.findByIdAndUpdate(req.body.eventId, { $pull: { "attendees": req.body.userId } }, { new: true, upsert: true })
-      .then(dbModel => res.json(dbModel)
-        // for (let i=0; i<dbModel.attendees.length; i++) {
-        //   if (dbModel.attendees[i] === req.user._id) {
-        //    dbModel.attendees.splice(i, 1); }}
-          
-        
-      ) //.then
+      .then(dbModel => res.json(dbModel))
       .catch(err => {
         console.log(err);
         res.status(422).json(err);
