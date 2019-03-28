@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom';
 import Wrapper from "../Wrapper/index";
 import EventCard from "../EventCards/EventCard";
 import API from '../../utils/api';
@@ -17,7 +18,9 @@ class MainPage extends Component {
     //  .then(console.log(this.state.Events))
       .catch(err => console.log(err));
   }
-  
+  clickCard = (event) =>{
+    this.props.history.push(`/events/${event.target.id}`)
+  }
   render() {
     return (
       <Wrapper>
@@ -25,11 +28,13 @@ class MainPage extends Component {
           return (
             <EventCard
               key={eventData._id}
+              id={eventData._id}
               name={eventData.name}
               location={eventData.location}
               creator={eventData.creator}
               start={eventData.start}
               end={eventData.end}
+              clickFunction = {this.clickCard}
             />
           );
         }): ""}
@@ -38,4 +43,4 @@ class MainPage extends Component {
   }
 }
 
-export default MainPage;
+export default withRouter(MainPage);
