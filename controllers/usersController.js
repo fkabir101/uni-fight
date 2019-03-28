@@ -45,22 +45,40 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   register: function (req, res) {
-    User
-      .register(new User({ username: req.body.username, email: req.body.email }), req.body.password, function (err) {
-        if (err) {
-          console.log('error while user register!', err);
-          return res.status(422).json(err);
-        }
-        console.log('user registered!');
+    User.findByUsername(req.body.username)
+      .then(dbModel => {
+        console.log("THIS IS DBMODEL: "+dbModel);
+        if (dbModel === null) {
+          User.register(new User({ username: req.body.username, email: req.body.email }), req.body.password, function (err) {
+            if (err) {
+              console.log('error while user register!', err);
+              return res.status(422).json(err);
+            }
+            console.log('user registered!');
+    
+            passport.authenticate('local')(req, res, function () {
+              if (err) {
+                console.log('error while user login!', err);
+                return res.status(422).json(err);
+              }
+              console.log('user logged in!');
+              res.json(true);
+            });
+          });
+        }//if dbModel === null
+        
+        // else {
+        //   alert("Username is taken.  Please try again.");
+        // }
+      })
 
-        passport.authenticate('local')(req, res, function () {
-          if (err) {
-            console.log('error while user login!', err);
-            return res.status(422).json(err);
-          }
-          console.log('user logged in!');
-          res.json(true);
-        });
-      });
-  }
-};
+
+
+
+
+
+      
+  } //register
+};//module.exports
+
+

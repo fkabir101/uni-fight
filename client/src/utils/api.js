@@ -35,6 +35,9 @@ export default {
   attend: function(attendInfo){
     return axios.put('/api/events/attend', attendInfo);
   },
+  leave: function(attendInfo){
+    return axios.put("/api/events/leave", attendInfo);
+  },
   search: function(search){
     return axios.get(`/api/events/search`, {params: search})
   },
