@@ -75,6 +75,14 @@ module.exports = {
         }
       })
   },
+  removeAttendant: function (req, res) {
+    db.Events.findByIdAndUpdate(req.body.eventId, { $pull: { "attendees": req.body.userId } }, { new: true, upsert: true })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => {
+        console.log(err);
+        res.status(422).json(err);
+      })
+  },//removeAttendant
   findBySearch: function (req, res) {
     console.log(req.query);
     db.Events.find(req.query)

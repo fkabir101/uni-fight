@@ -61,7 +61,7 @@ class App extends Component {
   }
   render() {
 
-    if (null) {
+    if (!this.state.isLoggedIn) {
       return (
       <Router>
         <div>
