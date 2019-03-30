@@ -3,6 +3,7 @@ import API from "../utils/api";
 import Button from "../components/button"
 import ReactPlayer from 'react-player'
 import ThemeSaver from "../components/themeswitcher/themeSaver";
+//import { withRouter } from 'react-router';
 
 
 class SingleEventPage extends Component {
@@ -68,9 +69,10 @@ class SingleEventPage extends Component {
       API.leave(attendObject)
         .then(res => this.setState({
           attendNum: res.data.attendees.length,
-          //ADD A REDIRECT
+          
         }))
         .catch(err => console.log(err));
+        this.props.history.push('/user/participating');
     }
   }
   render() {
