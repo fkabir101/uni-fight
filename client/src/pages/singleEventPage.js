@@ -42,7 +42,7 @@ class SingleEventPage extends Component {
         streamLink: res.data.streamLink
       }))
       .then(() => {
-
+        
       })
       .catch(error => console.log(error))
   }
@@ -115,6 +115,35 @@ class SingleEventPage extends Component {
         </React.Fragment>
       )//return
     } //if isIn
+    else if (this.state.attendees.length >= this.state.limit) {
+      return (
+        <React.Fragment>
+        <ThemeSaver stylePath={this.state.savedTheme} />
+
+        <div className="container border border-dark">
+          <div className="jumbotron bg-light text-dark text-center ">
+            <h1 className="display-4"><strong><u>{this.state.name}</u></strong></h1>
+            {this.state.categorys.map(category => (
+              <h2 className="d-inline-block m-2" key={category}>{category}</h2>
+            ))}
+            <h4>{this.state.venue} in {this.state.location}</h4>
+            {sessionStorage.getItem("id") !== null ?
+              (
+                <small>Sorry, This Event is Full</small>
+              ) :
+              (<p></p>)
+            }
+          </div>
+          <p className="text-center">Attendants: {this.state.attendNum}/{this.state.limit}</p>
+          <p>{this.state.description}</p>
+          {this.state.streamLink.includes("https") ?
+            (<ReactPlayer url={this.state.streamLink} />) :
+            (<p></p>)
+          }
+        </div>
+        </React.Fragment>
+      )//return
+    }// else if
     else {
     return (
       <React.Fragment>

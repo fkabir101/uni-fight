@@ -41,6 +41,10 @@ router
   .route('/register')
   .post(usersController.register);
 
+router
+  .route("/findByUsername")
+  .get(usersController.findByUsername);
+
 
 // Matches with "/api/user/:id"
 router
