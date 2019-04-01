@@ -35,8 +35,8 @@ class ExpandedEventCard extends Component {
               <li>
                 <strong>Categories:</strong> 
                 <br></br>
-                {this.state.images.map(image => (
-                  <img src={image} alt="Italian Trulli" height="100" width="200"/>
+                {this.state.images.map((image, i) => (
+                  <img key={i} src={image} alt="Italian Trulli" height="100" width="200"/>
                 ))}
               </li>
               <li>
