@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom';
+import Wrapper from "../Wrapper/index";
 import EventCard from "../EventCards/EventCard";
 import API from '../../utils/api';
 import AliceCarousel from 'react-alice-carousel';
@@ -28,10 +30,9 @@ class MainPage extends Component {
       //  .then(console.log(this.state.Events))
       .catch(err => console.log(err));
   }
-
- 
-
-
+  clickCard = (event) =>{
+    this.props.history.push(`/events/${event.target.id}`)
+  }
   render() {
     if (this.state.Events.length === 0) {
       return <div>Nothing To Show</div>
@@ -57,4 +58,4 @@ class MainPage extends Component {
   }
 }
 
-export default MainPage;
+export default withRouter(MainPage);

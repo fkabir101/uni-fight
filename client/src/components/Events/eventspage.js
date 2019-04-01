@@ -111,20 +111,21 @@ class EventsPage extends Component {
           }
         })()}
         <Wrapper>
-          {this.state.events !== 0 ?
-            (this.state.events.map(event =>
-              <ExpandedEventCard
-                key={event._id}
-                id={event._id}
-                clickFunction={this.clickCard}
-                name={event.name}
-                location={event.location}
-                info={event.description}
-                category={event.category}
-                start={event.start}
-                end={event.end}
-              />
-            )) :
+          {this.state.events !== 0 ? 
+          (this.state.events.map(event =>
+            <ExpandedEventCard
+              key={event._id}
+              id={event._id}
+              clickFunction = {this.clickCard}
+              name={event.name}
+              location={event.location}
+              info={event.description}
+              category={event.category}
+              start={event.start}
+              end={event.end}
+              page='view'
+            /> 
+          )):
             (<p></p>)
           }
         </Wrapper>

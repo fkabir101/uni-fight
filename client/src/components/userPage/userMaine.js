@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router
 import UserInfo from "./userInfo";
 import ParticipatingEvents from "./participatingEvents";
 import OwnedEvents from "./ownedEvents";
+import Edit from "./edit";
 //import ThemeSaver from "../../components/themeswitcher/themeSaver.js";
 
 
@@ -43,7 +44,8 @@ render() {
      <Switch>
       <Route exact path="/user/" render={() => <UserInfo /> } />
       <Route exact path={`${this.props.match.url}/owned`} render={() => <OwnedEvents />} />
-      <Route exact path={`${this.props.match.url}/participating`} render={() => <ParticipatingEvents />} />  
+      <Route exact path={`${this.props.match.url}/participating`} render={() => <ParticipatingEvents />} />
+      <Route exact path={`${this.props.match.url}/edit/:id`} render={() => <Edit/>} />
     </Switch>
      
       </div>

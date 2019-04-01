@@ -16,6 +16,7 @@ class SingleEventPage extends Component {
     end: "",
     venue: "",
     attendNum: 0,
+    attendees: [],
     streamLink: "",
     savedTheme: "/styles/defaultstyle.css"
 
@@ -36,6 +37,7 @@ class SingleEventPage extends Component {
         end: res.data.end,
         venue: res.data.venue,
         attendNum: res.data.attendees.length,
+        attendees: res.data.attendees,
         streamLink: res.data.streamLink
       }))
       .then(() => {
@@ -56,7 +58,61 @@ class SingleEventPage extends Component {
         .catch(err => console.log(err));
     }
   }
+  leaveEventFunction = () => {
+    console.log("click");
+    if (sessionStorage.getItem("id") !== null) {
+      const attendObject = {
+        userId: sessionStorage.getItem("id"),
+        eventId: this.props.match.params.id
+      }
+      API.leave(attendObject)
+        .then(res => this.setState({
+          attendNum: res.data.attendees.length,
+        }))
+        .catch(err => console.log(err));
+    }
+  }
   render() {
+    for (let i=0; i<this.state.attendees.length; i++) {
+      if (this.state.attendees[i] === sessionStorage.getItem("id")) {
+        var isIn = true;
+      }
+    }
+
+    if (isIn) {
+      return (
+        <React.Fragment>
+        <ThemeSaver stylePath={this.state.savedTheme} />
+
+        <div className="container border border-dark">
+          <div className="jumbotron bg-light text-dark text-center ">
+            <h1 className="display-4"><strong><u>{this.state.name}</u></strong></h1>
+            {this.state.categorys.map(category => (
+              <h2 className="d-inline-block m-2" key={category}>{category}</h2>
+            ))}
+            <h4>{this.state.venue} in {this.state.location}</h4>
+            {sessionStorage.getItem("id") !== null ?
+              (
+                <Button
+                  name="Leave"
+                  color="success"
+                  clickFunction={this.leaveEventFunction}
+                />
+              ) :
+              (<p></p>)
+            }
+          </div>
+          <p className="text-center">Attendants: {this.state.attendNum}/{this.state.limit}</p>
+          <p>{this.state.description}</p>
+          {this.state.streamLink.includes("https") ?
+            (<ReactPlayer url={this.state.streamLink} />) :
+            (<p></p>)
+          }
+        </div>
+        </React.Fragment>
+      )//return
+    } //if isIn
+    else {
     return (
       <React.Fragment>
         <ThemeSaver stylePath={this.state.savedTheme} />
@@ -86,9 +142,9 @@ class SingleEventPage extends Component {
             (<p></p>)
           }
         </div>
-        </React.Fragment>)
-    
-  }
-}
+        </React.Fragment>)//return
+    }//else
+  }//render
+}//class SingleEventPage extends Component
 
 export default SingleEventPage;
