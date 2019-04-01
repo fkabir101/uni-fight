@@ -65,7 +65,7 @@ class ExpandedEventCard extends Component {
                 name="Edit"
                 color= "primary"
                 id = {this.props.id}
-                clickFunction = {this.props.clickFunction}
+                clickFunction = {this.props.clickEdit}
               />
               <Button
                 name="Delete"
