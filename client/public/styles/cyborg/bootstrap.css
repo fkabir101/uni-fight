@@ -72,6 +72,18 @@ body {
   background-color: #060606;
 }
 
+#userLink {
+  color: white;
+}
+
+#createLink {
+  color: white;
+} 
+
+#logoutLink {
+  color: white;
+}
+
 [tabindex="-1"]:focus {
   outline: 0 !important;
 }
