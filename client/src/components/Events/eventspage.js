@@ -1,111 +1,110 @@
-import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import Wrapper from "../Wrapper/index";
 import ExpandedEventCard from "../Events/expandedevents";
 import SelectField from "../form/selectField";
 import InputField from "../form/inputfield";
 import Button from "../button";
-
 import locations from "../form/locations.json";
 import categorys from "../form/category.json";
-
 import API from "../../utils/api";
 
-class EventsPage extends Component{
+class EventsPage extends Component {
   state = {
     currentSearchField: "",
-    searchOptions:[
+    searchOptions: [
       {
-          option: "category"
+        option: "category"
       },
       {
-          option: "location"
+        option: "location"
       },
       {
-          option: "name"
+        option: "name"
       }
     ],
     categoryOption: categorys,
     locationOption: locations,
     search: "",
-    events:[]
+    events: []
   }
-  updateValue = event =>{
-    this.setState({currentSearchField: event.target.value});
+  updateValue = event => {
+    this.setState({ currentSearchField: event.target.value });
   }
-  getSearch = event =>{
-    this.setState({search: event.target.value})
+  getSearch = event => {
+    this.setState({ search: event.target.value })
   }
-  clickCard = (event) =>{
+  clickCard = (event) => {
     this.props.history.push(`/events/${event.target.id}`)
   }
-  onClickFunction = () =>{
+  onClickFunction = () => {
     const searchObject = {
-      [this.state.currentSearchField] : this.state.search
+      [this.state.currentSearchField]: this.state.search
     }
     API.search(searchObject)
-      .then(res =>{
-        this.setState({events: res.data})
+      .then(res => {
+        this.setState({ events: res.data })
       })
-      .catch(err =>{
+      .catch(err => {
         console.log(err)
       })
   }
-  render(){
+  
+  render() {
     return (
-        <div className="container">
-          <SelectField 
-            fieldName="Search Option"
-            id="searchOption" 
-            default="Search"
-            options={this.state.searchOptions}
-            onChangeValue = {this.updateValue}
-          />
+      <div className="container">
+        <SelectField
+          fieldName="Search Option"
+          id="searchOption"
+          default="Search"
+          options={this.state.searchOptions}
+          onChangeValue={this.updateValue}
+        />
         {(() => {
-          switch(this.state.currentSearchField) {
+          switch (this.state.currentSearchField) {
             case 'category':
               return <div>
-                <SelectField 
+                <SelectField
                   fieldName="Category"
                   id="category"
                   default="Category"
                   options={this.state.categoryOption}
-                  onChangeValue = {this.getSearch}
+                  onChangeValue={this.getSearch}
                 />
-                <Button 
-                  name="Search" 
+                <Button
+                  name="Search"
                   color="primary"
-                  clickFunction = {this.onClickFunction}
-                 />
+                  clickFunction={this.onClickFunction}
+                />
               </div>
             case 'location':
               return <div>
-                <SelectField 
+                <SelectField
                   fieldName="Location"
                   id="location"
                   default="Location"
                   options={this.state.locationOption}
-                  onChangeValue = {this.getSearch}
+                  onChangeValue={this.getSearch}
                 />
-                <Button 
-                  name="Search" 
+                <Button
+                  name="Search"
                   color="primary"
-                  clickFunction = {this.onClickFunction}
-                 />
+                  clickFunction={this.onClickFunction}
+                />
               </div>
             case 'name':
               return <div>
-                <InputField 
+                <InputField
                   fieldName="Name:"
                   id="name"
                   type="text"
-                  onChangeValue = {this.getSearch}
+                  onChangeValue={this.getSearch}
                 />
-                <Button 
-                  name="Search" 
+                <Button
+                  name="Search"
                   color="primary"
-                  clickFunction = {this.onClickFunction}
-                 />
+                  clickFunction={this.nameSearch}
+                />
               </div>
             default:
               return null;
@@ -130,7 +129,7 @@ class EventsPage extends Component{
             (<p></p>)
           }
         </Wrapper>
-        </div>
+      </div>
     )
   }
 }
