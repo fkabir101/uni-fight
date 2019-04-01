@@ -23,13 +23,19 @@ class SignUpForum extends Component {
   register = (e) => {
     e.preventDefault();
     if (this.state.confirmPassword === this.state.password) {
+      // API.findByUsername({username: this.state.username})
+      // .then((dbModel) => console.log(dbModel))
+
+
       API
         .register({ username: this.state.username, email: this.state.email, password: this.state.password })
-        .then(() =>{
+        .then((dbModel) =>{
+         // console.log(dbModel.data);
+          if (dbModel.data === true) {
           API
             .login({ username: this.state.username, password: this.state.password })
             .then(res => {
-              console.log("YOU MADE IT HERE!")
+              //console.log("YOU MADE IT HERE!")
               sessionStorage.setItem("user", res.data.username);
               sessionStorage.setItem("email", res.data.email);
               sessionStorage.setItem("id", res.data._id);
@@ -42,15 +48,19 @@ class SignUpForum extends Component {
             })
             .catch(err => console.log(err))
           }
+          else {
+            alert("That Username is taken.  Please try again.");
+          }
+          }
         )
       .catch (err => console.log(err.response.data));
 
     }// if statement
 
-    else {
-      alert("Passwords did not match, please try again");
-    }
-
+    // else {
+    //   alert("Passwords did not match, please try again");
+    // }
+      
   }
 
 

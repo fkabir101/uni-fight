@@ -76,6 +76,18 @@ body {
   outline: 0 !important;
 }
 
+#userLink {
+  color: white;
+}
+
+#createLink {
+  color: white;
+} 
+
+#logoutLink {
+  color: white;
+}
+
 hr {
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
