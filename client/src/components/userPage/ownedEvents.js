@@ -16,6 +16,9 @@ class OwnedEvents extends Component {
   clickCard = (event) => {
     this.props.history.push(`/events/${event.target.id}`)
   }
+  editCard = (event) =>{
+    this.props.history.push(`edit/${event.target.id}`)
+  }
 
   componentDidMount() {
     const CreatorID = sessionStorage.getItem("id");
@@ -51,12 +54,14 @@ class OwnedEvents extends Component {
                 key={event._id}
                 id={event._id}
                 clickFunction={this.clickCard}
+                clickEdit={this.editCard}
                 name={event.name}
                 location={event.location}
                 info={event.description}
                 category={event.category}
                 start={event.start}
                 end={event.end}
+                page='user'
               />
             )) :
             (<p></p>)

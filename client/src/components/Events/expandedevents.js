@@ -18,7 +18,7 @@ class ExpandedEventCard extends Component {
     this.setState({images: imageRefs});
   }
   render(){
-    console.log(this.state.images);
+    console.log(this.props.page);
     return (
         <div className="card col-12">
           <div className="content">
@@ -36,7 +36,7 @@ class ExpandedEventCard extends Component {
                 <strong>Categories:</strong> 
                 <br></br>
                 {this.state.images.map(image => (
-                  <img src={image} alt="Italian Trulli" height="100" width="200"/>
+                  <img src={image} alt="Italian Trulli" height="100" width="200" key={image}/>
                 ))}
               </li>
               <li>
@@ -45,12 +45,37 @@ class ExpandedEventCard extends Component {
               </li>
             </ul>
           </div>
-          <Button
-            name="Get More Info"
-            color= "success"
-            id = {this.props.id}
-            clickFunction = {this.props.clickFunction}
-          />
+          {this.props.page.includes("view") ?
+            (          
+              <Button
+                name="Get More Info"
+                color= "success"
+                id = {this.props.id}
+                clickFunction = {this.props.clickFunction}
+              />
+            ) :
+            (<div className="text-center">
+              <Button
+                name="More Info"
+                color= "success"
+                id = {this.props.id}
+                clickFunction = {this.props.clickFunction}
+              />
+              <Button
+                name="Edit"
+                color= "primary"
+                id = {this.props.id}
+                clickFunction = {this.props.clickEdit}
+              />
+              <Button
+                name="Delete"
+                color= "danger"
+                id = {this.props.id}
+                clickFunction = {this.props.clickFunction}
+              />
+            </div>)
+          }
+
         </div>
     
     );
