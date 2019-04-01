@@ -12,16 +12,19 @@ import OwnedEvents from "./ownedEvents";
 //console.log("Username", sessionStorage.getItem("user"));
 
 class UserPage extends Component {
+  
   UserPage = () => {
     this.props.history.push('/user');
   }
 
   OwnedEvents = () => {
     this.props.history.push('/user/owned');
+    window.location.reload();
   } 
 
   parEvents = () => {
     this.props.history.push('/user/participating');
+    window.location.reload();
   }
 
 render() {

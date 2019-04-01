@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-
 import InputField from './inputfield'
 import SelectField from "./selectField";
 import CheckBox from "./checkbox";
 import CalenderComponent from "./calender"
 import Button from "../button"
 import Moment from "moment";
-
 import locations from "./locations.json"
 import categorys from "./category.json"
-
 import API from "../../utils/api";
+import "./style/form.css";
 
 class Form extends Component {
   constructor() {
