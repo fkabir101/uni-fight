@@ -50,6 +50,7 @@ class ParticipatingEvents extends Component {
               category={event.category}
               start={event.start}
               end={event.end}
+              page='view'
             /> 
           )):
             (<p></p>)
