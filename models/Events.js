@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const EventSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
+    index: true
   },
   description : {
     type: String,
@@ -50,9 +51,10 @@ const EventSchema = new mongoose.Schema({
   },
   streamLink : {
     type: String,
-  }
+  },
+
 });
 
 const Event = mongoose.model("Event",EventSchema);
-
+EventSchema.index('name')
 module.exports = Event;

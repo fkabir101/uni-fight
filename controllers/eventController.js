@@ -11,7 +11,20 @@ module.exports = {
   findAll: function (req, res) {
     db.Events
       .find()
-      .limit(9)
+      .limit(20)
+      .then(dbModel => {
+        res.json(dbModel)
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(422).json(err)
+      });
+  },
+  findAllSortedByDate: function (req, res) {
+    db.Events
+      .find()
+      .limit(20)
+      .sort({'startUnix': -1})
       .then(dbModel => {
         res.json(dbModel)
       })
@@ -85,8 +98,9 @@ module.exports = {
   },//removeAttendant
   findBySearch: function (req, res) {
     console.log(req.query);
-    db.Events.find(req.query)
+    db.Events.find({ "$text" : { "$search" : req.query.name } })
       .then(dbModel => res.json(dbModel))
+      .catch(console.log)
   },
   findByUser: function (req, res) {
     db.Events.find({
