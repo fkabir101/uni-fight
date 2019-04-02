@@ -31,14 +31,9 @@ class SignUpForum extends Component {
   register = (e) => {
     e.preventDefault();
     if (this.state.confirmPassword === this.state.password) {
-      // API.findByUsername({username: this.state.username})
-      // .then((dbModel) => console.log(dbModel))
-
-
       API
         .register({ username: this.state.username, email: this.state.email, password: this.state.password })
         .then((dbModel) =>{
-         // console.log(dbModel.data);
           if (dbModel.data === true) {
           API
             .login({ username: this.state.username, password: this.state.password })

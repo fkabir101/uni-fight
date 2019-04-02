@@ -3,8 +3,6 @@ import "./style.css";
 import Button from "../button"
 
 function EventCard(props) {
-
- console.log(props.category);
   return (
     <div className="card">
       <div className="content">
