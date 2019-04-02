@@ -101,6 +101,7 @@ class SingleEventPage extends Component {
                   color="success"
                   clickFunction={this.leaveEventFunction}
                 />
+                // add modal here
               ) :
               (<p></p>)
             }
