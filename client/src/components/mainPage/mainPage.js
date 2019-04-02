@@ -55,12 +55,14 @@ class MainPage extends Component {
               return (
                 <EventCard
                   key={eventData._id}
+                  id={eventData._id}
                   name={eventData.name}
                   location={eventData.location}
                   category={eventData.category}
                   start={eventData.start}
                   end={eventData.end}
                   style={{maxHeight: '325px', maxWidth: '325px'}}
+                  clickFunction={this.clickCard}
                 />
               );
             }) : []}
