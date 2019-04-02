@@ -103,7 +103,7 @@ class EventsPage extends Component {
                 <Button
                   name="Search"
                   color="primary"
-                  clickFunction={this.nameSearch}
+                  clickFunction={this.onClickFunction}
                 />
               </div>
             default:

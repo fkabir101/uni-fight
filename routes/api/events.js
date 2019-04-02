@@ -11,6 +11,9 @@ router.route("/search")
   .get(eventController.findBySearch);
 router.route("/get")
   .get(eventController.findAll);
+router.route("/getsorted")
+  .get(eventController.findAllSortedByDate);
+  //this route goes to controllers/event controller
 router.route("/user")
   .get(eventController.findByUser);
 router.route("/deleteEvent/:id")
