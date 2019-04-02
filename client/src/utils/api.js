@@ -7,6 +7,9 @@ export default {
   getEvents: function () {
     return axios.get("/api/events/get");
   },
+  getSortedEvents: function () {
+    return axios.get("/api/events/getsorted");
+  },
   getEventById: function (id) {
     return axios.get('/api/events/' + id);
   },
