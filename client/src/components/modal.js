@@ -28,18 +28,16 @@ class ModalComponent extends Component {
     e.preventDefault();
     const userId = sessionStorage.getItem("id");
   API
-    //.removeCreatedEvents(userId)
     .remove(userId)
     .then(res => {
       console.log(res.data);
       sessionStorage.removeItem("user");
       sessionStorage.removeItem("email");
       sessionStorage.removeItem("id");
-      // this.props.loginCheck();
       this.setState({isLoggedIn: false});
       localStorage.clear();
-      window.location.reload();
       this.props.history.push('/login');
+      window.location.reload();
    })
   }
 
@@ -56,14 +54,8 @@ class ModalComponent extends Component {
           </Modal.Header>
           <Modal.Body>{this.props.msg}</Modal.Body>
           <Modal.Footer>
-            <Button variant={this.props.secColor} 
-            onClick={this.handleClose}>
-              {this.props.negative}
-            </Button>
-            <Button variant={this.props.primColor} 
-            onClick={this.delete}>
-              {this.props.affirmative}
-            </Button>
+            <Button variant={this.props.secColor} onClick={this.handleClose}>{this.props.negative}</Button>
+            <Button variant={this.props.primColor} onClick={this.delete}> {this.props.affirmative}</Button>
           </Modal.Footer>
         </Modal>
       </>

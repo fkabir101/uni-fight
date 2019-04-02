@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import API from "../../utils/api";
 import { withRouter } from 'react-router';
+import Modal from 'react-bootstrap/Modal'
+import { Button } from 'react-bootstrap';
+
+
+//import PasswordModalComponent from "./modalPassword";
 
 class SignUpForum extends Component {
   state = {
@@ -9,8 +14,11 @@ class SignUpForum extends Component {
     username: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    passModal: false,
+    userModal: false
   }
+
 
   handleInputChange = e => {
     const { name, value } = e.target;
@@ -23,58 +31,61 @@ class SignUpForum extends Component {
   register = (e) => {
     e.preventDefault();
     if (this.state.confirmPassword === this.state.password) {
-      // API.findByUsername({username: this.state.username})
-      // .then((dbModel) => console.log(dbModel))
-
-
       API
         .register({ username: this.state.username, email: this.state.email, password: this.state.password })
         .then((dbModel) =>{
-         // console.log(dbModel.data);
           if (dbModel.data === true) {
           API
             .login({ username: this.state.username, password: this.state.password })
             .then(res => {
-              //console.log("YOU MADE IT HERE!")
               sessionStorage.setItem("user", res.data.username);
               sessionStorage.setItem("email", res.data.email);
               sessionStorage.setItem("id", res.data._id);
-
               this.setState({ isLoggedIn: res.data })
-
               this.props.history.push('/');
               window.location.reload();
-
             })
             .catch(err => console.log(err))
-          }
+          } //if dbModel.data === true
           else {
-            alert("That Username is taken.  Please try again.");
+           this.setState({ userModal: true });
           }
-          }
-        )
+          })//.then
       .catch (err => console.log(err.response.data));
+    }// if passwords match statement
+    else {
+     this.setState({ passModal: true });
+    }
+  }//register
 
-    }// if statement
-
-    // else {
-    //   alert("Passwords did not match, please try again");
-    // }
-      
-  }
-
-
+  HandleClose = () => {
+    this.setState({ passModal: false });
+    this.setState({ userModal: false });
+  }//HandleClose
 
 
   render() {
-    if (this.state.success) {
-      //if(this.state.success) {
-      return <Redirect to="/" />
-      //this.props.history.push('/')
-    }
-
     return (
       <div className="container my-5">
+      <Modal show={this.state.passModal} onHide={this.HandleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Uni-Fight Says...</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Your passwords do not match please try again.</Modal.Body>
+          <Modal.Footer>
+            <Button variant="danger" onClick={this.HandleClose}>Close</Button>
+          </Modal.Footer>
+        </Modal>
+
+        <Modal show={this.state.userModal} onHide={this.HandleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Uni-Fight Says...</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>{this.state.username} has been already taken.  Please try again.</Modal.Body>
+          <Modal.Footer>
+            <Button variant="danger" onClick={this.HandleClose}>Close</Button>
+          </Modal.Footer>
+        </Modal>
         <div className="row justify-content-center">
           <form>
             <div className="form-group">
@@ -86,7 +97,6 @@ class SignUpForum extends Component {
                 onChange={this.handleInputChange}
                 className="form-control"
                 placeholder="Pick a Username" />
-              {/* <small id="usernameHelp" className="form-text text-muted">Enter your username</small> */}
             </div>
             <div className="form-group">
               <label htmlFor="email">email</label>
@@ -97,7 +107,6 @@ class SignUpForum extends Component {
                 onChange={this.handleInputChange}
                 className="form-control"
                 placeholder="Enter Your Email" />
-              {/* <small id="emailHelp" className="form-text text-muted">Enter your Email</small> */}
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>

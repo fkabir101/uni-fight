@@ -16,7 +16,8 @@ router.route("/getsorted")
   //this route goes to controllers/event controller
 router.route("/user")
   .get(eventController.findByUser);
-
+router.route("/deleteEvent/:id")
+  .delete(eventController.remove);
 router.route("/:id")
   .get(eventController.getEventById);
 module.exports = router
