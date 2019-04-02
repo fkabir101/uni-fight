@@ -30,6 +30,28 @@ class Form extends Component {
   }
   componentDidMount(){
     this.setState({creator:sessionStorage.getItem("id")})
+
+    if(this.props.type === "edit"){
+      API.getEventById(this.props.match.params.id)
+      .then(res => this.setState({
+        category: res.data.category,
+        description: res.data.description,
+        limit: res.data.limit,
+        location: res.data.location,
+        name: res.data.name,
+        start: res.data.start,
+        startUnix: res.data.startUnix,
+        end: res.data.end,
+        venue: res.data.venue,
+        attendNum: res.data.attendees.length,
+        attendees: res.data.attendees,
+        streamLink: res.data.streamLink
+      }))
+      .then(() => {
+        
+      })
+      .catch(error => console.log(error))
+    }
   }
   updateValue = event =>{
     this.setState({[event.target.id]: event.target.value});
@@ -59,7 +81,20 @@ class Form extends Component {
       this.setState({[type] : date});
     }
   }
-
+  onClickEditFunction = ()=>{
+      const unixStart = this.state.startUnix;
+      const unixEnd = Moment(this.state.end, "ddd MMM DD YYYY").format("X");
+      if(unixEnd >= unixStart){
+        API.update(this.props.match.params.id,this.state)
+        .then(res => {
+          this.props.history.push('/user/owned')
+        })
+        .catch(error => console.log(error)) 
+      }
+      else{
+        alert("Error: Start date takes place before end date");
+      }
+  }    
   onClickFunction = ()=>{
     const unixStart = this.state.startUnix;
     const unixEnd = Moment(this.state.end, "ddd MMM DD YYYY").format("X");
@@ -113,13 +148,23 @@ class Form extends Component {
             onChangeValue = {this.updateValue}
           />
           <label>Categories:</label> <br/>
-          {categorys.map(category => (
-            <CheckBox 
-              key={category.option}
-              fieldName={category.option}
-              onChangeValue = {this.getCheckBoxValue}
-            />
-          ))}
+          {categorys.map(category => {
+            if(!this.state.category.includes(category.option)){
+              return <CheckBox 
+                key={category.option}
+                fieldName={category.option}
+                onChangeValue = {this.getCheckBoxValue}
+              />
+            }
+            else{
+              return <CheckBox 
+                key={category.option}
+                fieldName={category.option}
+                onChangeValue = {this.getCheckBoxValue}
+                isChecked="true"
+              />
+            }
+          })}
           <br/>
           <br/>
           <div className = "row">
@@ -145,16 +190,31 @@ class Form extends Component {
             type="url"
             onChangeValue = {this.updateValue}
           />
-          <Button 
-            name="Submit" 
-            color="primary"
-            clickFunction = {this.onClickFunction}
-          />
+           {(() =>{switch(this.props.type){
+              case "edit":
+                return <div>
+                  <Button 
+                  name="Edit" 
+                  color="primary"
+                  clickFunction = {this.onClickEditFunction}
+                  />
+                </div>;
+              default:
+                return <div>
+                  <Button 
+                  name="Submit" 
+                  color="primary"
+                  clickFunction = {this.onClickFunction}
+                  />
+                </div>;
+              }
+            })()}
         </form>
       </div>
     )
   }
 }
+
 
 export default withRouter(Form);
 

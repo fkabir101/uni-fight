@@ -14,7 +14,8 @@ router.route("/get")
   //this route goes to controllers/event controller
 router.route("/user")
   .get(eventController.findByUser);
-
+router.route("/update/:id")
+  .put(eventController.update);
 router.route("/:id")
   .get(eventController.getEventById);
 module.exports = router
