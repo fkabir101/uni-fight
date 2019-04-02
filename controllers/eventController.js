@@ -98,7 +98,7 @@ module.exports = {
   },//removeAttendant
   findBySearch: function (req, res) {
     console.log(req.query);
-    db.Events.find({ "$text" : { "$search" : req.query.name } })
+    db.Events.find( req.query)
       .then(dbModel => res.json(dbModel))
       .catch(console.log)
   },
