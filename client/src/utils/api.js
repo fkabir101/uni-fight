@@ -53,5 +53,8 @@ export default {
   },
   update: function(id, updateData){
     return axios.put(`/api/events/update/${id}`, updateData);
+  },
+  invite: function(username){
+    return axios.get("api/user/invite", username);
   }
 }

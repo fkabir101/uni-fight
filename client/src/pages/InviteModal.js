@@ -13,7 +13,16 @@ class InviteModalComponent extends Component {
 
     this.state = {
       show: false,
+      username: ""
     };
+  }
+
+  handleInputChange = e => {
+    const { name, value } = e.target;
+
+    this.setState({
+      [name]: value
+    })
   }
 
   handleClose() {
@@ -24,38 +33,37 @@ class InviteModalComponent extends Component {
     this.setState({ show: true });
   }
 
-  delete = (e) => {
-    e.preventDefault();
-    const userId = sessionStorage.getItem("id");
-  API
-    .remove(userId)
-    .then(res => {
-      console.log(res.data);
-      sessionStorage.removeItem("user");
-      sessionStorage.removeItem("email");
-      sessionStorage.removeItem("id");
-      this.setState({isLoggedIn: false});
-      localStorage.clear();
-      this.props.history.push('/login');
-      window.location.reload();
-   })
+  invite = () => {
+    API.invite(this.state.username)
+    .then(this.setState({ show: false}))
   }
 
   render() {
     return (
       <>
-        <Button variant="danger" onClick={this.handleShow}>
-          {this.props.btnName}
+        <Button variant="primary" onClick={this.handleShow}>
+          Invite
         </Button>
 
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>{this.props.title}</Modal.Title>
+            <Modal.Title>Invite Someone</Modal.Title>
           </Modal.Header>
-          <Modal.Body>{this.props.msg}</Modal.Body>
+          <Modal.Body>
+          <div className="form-group">
+              <label htmlFor="username">Enter the Username of Someone You Would Like to Invite!</label>
+              <input
+                type="text"
+                name="username"
+                value={this.state.username}
+                onChange={this.handleInputChange}
+                className="form-control"
+                placeholder="Enter Their Username"/>
+            </div>
+          </Modal.Body>
           <Modal.Footer>
-            <Button variant={this.props.secColor} onClick={this.handleClose}>{this.props.negative}</Button>
-            <Button variant={this.props.primColor} onClick={this.delete}> {this.props.affirmative}</Button>
+            {/* <Button variant={this.props.secColor} onClick={this.handleClose}>{this.props.negative}</Button> */}
+            <Button variant={this.props.primColor} onClick={this.invite}> Send</Button>
           </Modal.Footer>
         </Modal>
       </>
