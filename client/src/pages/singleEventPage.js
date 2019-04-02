@@ -3,6 +3,7 @@ import API from "../utils/api";
 import Button from "../components/button"
 import ReactPlayer from 'react-player'
 import ThemeSaver from "../components/themeswitcher/themeSaver";
+import InviteModalComponent from "./InviteModal";
 //import { withRouter } from 'react-router';
 
 
@@ -101,8 +102,14 @@ class SingleEventPage extends Component {
                   color="success"
                   clickFunction={this.leaveEventFunction}
                 />
+                // add modal here
+                
               ) :
-              (<p></p>)
+              (<p></p>) 
+              
+            }
+            {
+              (<InviteModalComponent />)
             }
           </div>
           <p className="text-center">Attendants: {this.state.attendNum}/{this.state.limit}</p>
