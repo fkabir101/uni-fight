@@ -71,7 +71,7 @@ class ExpandedEventCard extends Component {
                 name="Delete"
                 color= "danger"
                 id = {this.props.id}
-                clickFunction = {this.props.clickFunction}
+                clickFunction = {this.props.clickDelete}
               />
             </div>)
           }

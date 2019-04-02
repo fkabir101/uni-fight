@@ -78,10 +78,7 @@ class SignUpForum extends Component {
           </Modal.Header>
           <Modal.Body>Your passwords do not match please try again.</Modal.Body>
           <Modal.Footer>
-            <Button variant="danger" 
-            onClick={this.HandleClose}>
-              Close
-            </Button>
+            <Button variant="danger" onClick={this.HandleClose}>Close</Button>
           </Modal.Footer>
         </Modal>
 
@@ -91,10 +88,7 @@ class SignUpForum extends Component {
           </Modal.Header>
           <Modal.Body>{this.state.username} has been already taken.  Please try again.</Modal.Body>
           <Modal.Footer>
-            <Button variant="danger" 
-            onClick={this.HandleClose}>
-              Close
-            </Button>
+            <Button variant="danger" onClick={this.HandleClose}>Close</Button>
           </Modal.Footer>
         </Modal>
         <div className="row justify-content-center">
@@ -108,7 +102,6 @@ class SignUpForum extends Component {
                 onChange={this.handleInputChange}
                 className="form-control"
                 placeholder="Pick a Username" />
-              {/* <small id="usernameHelp" className="form-text text-muted">Enter your username</small> */}
             </div>
             <div className="form-group">
               <label htmlFor="email">email</label>
@@ -119,7 +112,6 @@ class SignUpForum extends Component {
                 onChange={this.handleInputChange}
                 className="form-control"
                 placeholder="Enter Your Email" />
-              {/* <small id="emailHelp" className="form-text text-muted">Enter your Email</small> */}
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>

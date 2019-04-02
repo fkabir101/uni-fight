@@ -19,6 +19,11 @@ class OwnedEvents extends Component {
   editCard = (event) =>{
     this.props.history.push(`edit/${event.target.id}`)
   }
+  deleteCard = (event)=> {
+    API.deleteEvent(event.target.id)
+    .then(window.location.reload())
+
+  }
 
   componentDidMount() {
     const CreatorID = sessionStorage.getItem("id");
@@ -55,6 +60,7 @@ class OwnedEvents extends Component {
                 id={event._id}
                 clickFunction={this.clickCard}
                 clickEdit={this.editCard}
+                clickDelete={this.deleteCard}
                 name={event.name}
                 location={event.location}
                 info={event.description}

@@ -28,7 +28,7 @@ class UserInfo extends Component {
           <ThemeSaver stylePath={this.state.savedTheme} />
           <ModalComponent
             btnName="DeleteAccount"
-            title="Delete Account"
+            title="Uni-Fight asks..."
             msg="Are you sure you want to delete your account?"
             negative="No! DON'T Delete My Acount"
             affirmative="Yes! Delete My Account."
