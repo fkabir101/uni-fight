@@ -7,11 +7,14 @@ export default {
   getEvents: function () {
     return axios.get("/api/events/get");
   },
+  getSortedEvents: function () {
+    return axios.get("/api/events/getsorted");
+  },
   getEventById: function (id) {
     return axios.get('/api/events/' + id);
   },
   deleteEvent: function (id) {
-    return axios.delete("/api/events/" + id);
+    return axios.delete("/api/events/deleteEvent/"+ id);
   },
   login: function(loginCreds) {
     return axios.post('/api/users/login', loginCreds);
