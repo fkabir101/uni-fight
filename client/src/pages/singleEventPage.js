@@ -4,7 +4,7 @@ import Button from "../components/button"
 import ReactPlayer from 'react-player'
 import ThemeSaver from "../components/themeswitcher/themeSaver";
 import InviteModalComponent from "./InviteModal";
-//import { withRouter } from 'react-router';
+import { withRouter } from 'react-router';
 
 
 class SingleEventPage extends Component {
@@ -40,7 +40,8 @@ class SingleEventPage extends Component {
         venue: res.data.venue,
         attendNum: res.data.attendees.length,
         attendees: res.data.attendees,
-        streamLink: res.data.streamLink
+        streamLink: res.data.streamLink,
+        isIn: false
       }))
       .then(() => {
         
@@ -54,8 +55,12 @@ class SingleEventPage extends Component {
         eventId: this.props.match.params.id
       }
       API.attend(attendObject)
-        .then(res => this.setState({
+        .then(
+          //this.props.history.push("/events"),
+          //window.location.reload(),
+          res => this.setState({
           attendNum: res.data.attendees.length,
+          isIn: true,
         }))
         .catch(err => console.log(err));
     }
@@ -70,7 +75,7 @@ class SingleEventPage extends Component {
       API.leave(attendObject)
         .then(res => this.setState({
           attendNum: res.data.attendees.length,
-          
+          isIn: false,
         }))
         .catch(err => console.log(err));
         this.props.history.push('/user/participating');
@@ -79,11 +84,11 @@ class SingleEventPage extends Component {
   render() {
     for (let i=0; i<this.state.attendees.length; i++) {
       if (this.state.attendees[i] === sessionStorage.getItem("id")) {
-        var isIn = true;
+        this.state.isIn = true;
       }
     }
 
-    if (isIn) {
+    if (this.state.isIn) {
       return (
         <React.Fragment>
         <ThemeSaver stylePath={this.state.savedTheme} />
@@ -102,8 +107,6 @@ class SingleEventPage extends Component {
                   color="success"
                   clickFunction={this.leaveEventFunction}
                 />
-                // add modal here
-                
               ) :
               (<p></p>) 
               
@@ -186,4 +189,4 @@ class SingleEventPage extends Component {
   }//render
 }//class SingleEventPage extends Component
 
-export default SingleEventPage;
+export default withRouter(SingleEventPage);
