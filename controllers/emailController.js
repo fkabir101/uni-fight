@@ -23,9 +23,9 @@ module.exports = {
   sendInvite: function(req, res){
     var mailOptions = {
       from: 'uni.fivs@gmail.com',
-      to: email,
-      subject: 'An Event has been Updated',
-      text: `${req.body.user} has been invited you to an event. Link: ${req.body.link}`
+      to: req.body.email,
+      subject: 'You have been invited to an Event',
+      text: `${req.body.sender} has been invited you to an event. Link: ${req.body.link}`
     };
     transport.sendMail(mailOptions, function(error, info){
       if (error) {

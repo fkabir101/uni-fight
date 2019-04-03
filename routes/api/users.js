@@ -45,6 +45,10 @@ router
   .route("/findByUsername")
   .get(usersController.findByUsername);
 
+router
+  .route("/findByUsername/:username")
+  .get(usersController.findByUsername);
+
 
 // Matches with "/api/user/:id"
 router
@@ -52,10 +56,6 @@ router
 .get(usersController.findById)
 .put(usersController.update)
 .delete(usersController.remove);
-
-router
-  .route("/invite")
-  .get(usersController.findByUsername);
 
 
 module.exports = router;

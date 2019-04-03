@@ -17,8 +17,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByUsername: function (req, res) {
+    console.log("Totally gets here "+ req.params.username);
     User
-      .findByUsername(req.body.username)
+      .find( { 'username' : { '$regex' : req.params.username, '$options' : 'i' } } )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
