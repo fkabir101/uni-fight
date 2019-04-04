@@ -2,7 +2,6 @@ const transport = require('../mailer/mail');
 
 module.exports = {
   sendEmails: function(req, res){
-    console.log(req.body);
     req.body.emails.forEach(email => {
       var mailOptions = {
         from: 'uni.fivs@gmail.com',

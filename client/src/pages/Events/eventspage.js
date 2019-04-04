@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import Wrapper from "../Wrapper/index";
-import ExpandedEventCard from "../Events/expandedevents";
-import SelectField from "../form/selectField";
-import InputField from "../form/inputfield";
-import Button from "../button";
-import locations from "../form/locations.json";
-import categorys from "../form/category.json";
+import Wrapper from "../../components/Wrapper/index.js";
+import ExpandedEventCard from "../../components/EventCards/expandedevents.js";
+import SelectField from "../../components/form/selectField.js";
+import InputField from "../../components/form/inputfield";
+import Button from "../../components/button";
+import locations from "../../json/locations.json";
+import categorys from "../../json/category.json";
 import API from "../../utils/api";
 
 class EventsPage extends Component {

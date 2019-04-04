@@ -7,12 +7,10 @@ router
   .route('/login')
   .post(passport.authenticate('local'), function (req, res) {
     // Log in and send back user information
-    console.log(req.user);
     res.json(req.user);
   })
   .get(function (req, res) {
     // Check to see if user is logged in
-    console.log(req.user);
     if (req.user) {
       // If logged in, send back this flag and the username itself
       res.json({isLoggedIn: true, username: req.user.username, email: req.user.email});
@@ -28,7 +26,6 @@ router
   .get(function (req, res) {
     // Log user out
     req.logout()
-    console.log(req.user);
     res.json(false);
   })
 

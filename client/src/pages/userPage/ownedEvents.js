@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import Wrapper from "../Wrapper/index";
-import ExpandedEventCard from "../Events/expandedevents";
+import Wrapper from "../../components/Wrapper/index.js";
+import ExpandedEventCard from "../../components/EventCards/expandedevents.js";
 import API from "../../utils/api"
-import ThemeSaver from "../themeswitcher/themeSaver";
+import ThemeSaver from "../../components/themeswitcher/themeSaver.js";
 
 
 

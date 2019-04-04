@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import Wrapper from "../Wrapper/index";
-import EventCard from "../EventCards/EventCard";
-import ExpandedEventCard from "../Events/expandedevents";
-import API from '../../utils/api';
+import Wrapper from "../../components/Wrapper/index.js";
+import EventCard from "../../components/EventCards/EventCard.js";
+import ExpandedEventCard from "../../components/EventCards/expandedevents.js";
+import API from "../../utils/api.js";
 import AliceCarousel from 'react-alice-carousel';
 import "react-alice-carousel/lib/alice-carousel.css";
 
@@ -29,7 +29,6 @@ class MainPage extends Component {
       .then(res => this.setState({
         Events: res.data
       }))
-      //  .then(console.log(this.state.Events))
       .catch(err => console.log(err));
 
 

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import API from "../../utils/api";
 import { withRouter } from 'react-router';
 import Modal from 'react-bootstrap/Modal'

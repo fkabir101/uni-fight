@@ -17,7 +17,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByUsername: function (req, res) {
-    console.log("Totally gets here "+ req.params.username);
     User
       .find( { 'username' : { '$regex' : req.params.username, '$options' : 'i' } } )
       .then(dbModel => res.json(dbModel))
@@ -54,21 +53,18 @@ module.exports = {
   register: function (req, res) {
     User.findByUsername(req.body.username)
       .then(dbModel => {
-       // console.log("THIS IS DBMODEL: "+dbModel);
         if (dbModel === null) {
           User.register(new User({ username: req.body.username, email: req.body.email }), req.body.password, function (err) {
             if (err) {
               console.log('error while user register!', err);
               return res.status(422).json(err);
             }
-          //  console.log('user registered!');
     
             passport.authenticate('local')(req, res, function () {
               if (err) {
                 console.log('error while user login!', err);
                 return res.status(422).json(err);
               }
-            //  console.log('user logged in!');
               res.json(true);
             });
           });

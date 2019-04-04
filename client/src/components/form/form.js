@@ -6,8 +6,8 @@ import CheckBox from "./checkbox";
 import CalenderComponent from "./calender"
 import Button from "../button"
 import Moment from "moment";
-import locations from "./locations.json"
-import categorys from "./category.json"
+import locations from "../../json/locations.json"
+import categorys from "../../json/category.json"
 import API from "../../utils/api";
 import "./style/form.css";
 
