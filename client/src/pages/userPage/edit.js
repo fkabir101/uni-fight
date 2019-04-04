@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Form from "../form/form";
+import Form from "../../components/form/form.js";
 
 class Edit extends Component {
   render(){

@@ -1,16 +1,10 @@
 import React, {Component} from "react";
-import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
+import {Route, Switch, withRouter } from "react-router-dom";
 import UserInfo from "./userInfo";
 import ParticipatingEvents from "./participatingEvents";
 import OwnedEvents from "./ownedEvents";
 import Edit from "./edit";
-//import ThemeSaver from "../../components/themeswitcher/themeSaver.js";
 
-
-
-//import {Redirect} from "react-router-dom";
-
-//console.log("Username", sessionStorage.getItem("user"));
 
 class UserPage extends Component {
   

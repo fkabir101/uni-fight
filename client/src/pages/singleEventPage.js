@@ -66,7 +66,6 @@ class SingleEventPage extends Component {
     }
   }
   leaveEventFunction = () => {
-    console.log("click");
     if (sessionStorage.getItem("id") !== null) {
       const attendObject = {
         userId: sessionStorage.getItem("id"),
@@ -84,7 +83,7 @@ class SingleEventPage extends Component {
   render() {
     for (let i=0; i<this.state.attendees.length; i++) {
       if (this.state.attendees[i] === sessionStorage.getItem("id")) {
-        this.state.isIn = true;
+        this.setState({isIn : true}).then(() =>{})
       }
     }
 

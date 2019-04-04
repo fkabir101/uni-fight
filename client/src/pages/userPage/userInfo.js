@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import ModalComponent from "../modal";
-import CssSwitcher from "../themeswitcher/cssSwitcher";
+import ModalComponent from "../../components/modal.js";
+import CssSwitcher from "../../components/themeswitcher/cssSwitcher.js";
 import { withRouter } from 'react-router';
-import ThemeSaver from "../themeswitcher/themeSaver";
+import ThemeSaver from "../../components/themeswitcher/themeSaver.js";
 
 
 

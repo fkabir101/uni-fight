@@ -36,8 +36,6 @@ class InviteModalComponent extends Component {
   invite = () => {
     API.getUsername(this.state.username)
     .then(res => {
-      console.log(res.data[0].email);
-      console.log(window.location.href)
       API.invite(res.data[0].email,window.location.href,sessionStorage.getItem('user'))
         .then(res => {this.setState({ show: false})})
     })

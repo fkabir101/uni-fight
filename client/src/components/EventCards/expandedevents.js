@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Button from "../button"
-import Categories from "../form/category.json"
+import Categories from "../../json/category.json"
 
 class ExpandedEventCard extends Component {
   state = {
@@ -18,7 +18,6 @@ class ExpandedEventCard extends Component {
     this.setState({images: imageRefs});
   }
   render(){
-    console.log(this.props.page);
     return (
         <div className="card col-12">
           <div className="content">

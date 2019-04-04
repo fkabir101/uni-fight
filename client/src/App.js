@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Form from './components/form/form';
 import Header from "./components/header/headerMaine";
-import MainPage from "./components/mainPage/mainPage";
+import MainPage from "./pages/mainPage/mainPage";
 import Footer from "./components/footer/footerMaine"
 import Login from "./components/login/loginMaine"
-import EventsPage from "./components/Events/eventspage";
-import UserPage from "./components/userPage/userMaine"
+import EventsPage from "./pages/Events/eventspage";
+import UserPage from "./pages/userPage/userMaine";
 import SingleEventPage from "./pages/singleEventPage";
 import ThemeSaver from "./components/themeswitcher/themeSaver";
 import API from './utils/api';
@@ -29,7 +29,6 @@ class App extends Component {
     API
       .loginCheck()
       .then(res => {
-       // console.log(res.data);
         this.setState({
           isLoggedIn: res.data.isLoggedIn, username: res.data.username, email: res.data.email 
         })

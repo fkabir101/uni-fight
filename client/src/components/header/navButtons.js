@@ -8,7 +8,6 @@ class RenderNavbar extends Component {
     API
       .logout()
       .then(res => {
-        console.log(res.data);
         sessionStorage.removeItem("user");
         sessionStorage.removeItem("email");
         sessionStorage.removeItem("id");
